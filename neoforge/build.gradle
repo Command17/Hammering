@@ -3,6 +3,8 @@ plugins {
     id 'me.modmuss50.mod-publish-plugin'
 }
 
+archivesBaseName = archives_name
+
 version = "${mod_version}+mc${minecraft_version}+neoforge"
 
 architectury {
