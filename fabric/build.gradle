@@ -119,4 +119,21 @@ publishMods {
             id = "P7dR8mSH"
         }
     }
+
+    curseforge {
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        clientRequired = true
+        serverRequired = true
+        javaVersions.add(JavaVersion.VERSION_21)
+        projectId = "1136760"
+        minecraftVersions.add(minecraft_version)
+
+        requires("architectury-api", "fabric-api")
+    }
+
+    github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        repository = "Command17/Hammering"
+        commitish = branch
+    }
 }
