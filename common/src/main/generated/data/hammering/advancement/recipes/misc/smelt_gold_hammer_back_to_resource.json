@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gold_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hammering:gold_hammer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hammering:smelt_gold_hammer_back_to_resource"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gold_hammer"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hammering:smelt_gold_hammer_back_to_resource"
+    ]
+  }
+}

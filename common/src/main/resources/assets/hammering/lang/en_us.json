@@ -1,0 +1,15 @@
+{
+  "item.hammering.iron_hammer": "Iron Hammer",
+  "item.hammering.gold_hammer": "Gold Hammer",
+  "item.hammering.diamond_hammer": "Diamond Hammer",
+  "item.hammering.netherite_hammer": "Netherite Hammer",
+
+  "itemGroup.hammering.main": "Hammering",
+
+  "advancement.hammering.hammer_time.title": "Hammer Time!",
+  "advancement.hammering.hammer_time.info": "Get an Iron Hammer",
+  "advancement.hammering.hammer_collection.title": "Hammer Collection",
+  "advancement.hammering.hammer_collection.info": "Get every Hammer",
+
+  "enchantment.hammering.hammering": "Hammering"
+}

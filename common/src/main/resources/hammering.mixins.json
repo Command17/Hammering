@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.github.command17.hammering.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+    "client.LevelRendererMixin"
+  ],
+  "mixins": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

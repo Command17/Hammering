@@ -1,0 +1,46 @@
+{
+  "parent": "hammering:hammer_time",
+  "criteria": {
+    "has_hammers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hammering:netherite_hammer"
+          },
+          {
+            "items": "hammering:iron_hammer"
+          },
+          {
+            "items": "hammering:gold_hammer"
+          },
+          {
+            "items": "hammering:diamond_hammer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.hammering.hammer_collection.info"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "hammering:netherite_hammer"
+    },
+    "title": {
+      "translate": "advancement.hammering.hammer_collection.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_hammers"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  },
+  "sends_telemetry_event": true
+}

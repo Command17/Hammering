@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "has_iron_hammer": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hammering:iron_hammer"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.hammering.hammer_time.info"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hammering:iron_hammer"
+    },
+    "title": {
+      "translate": "advancement.hammering.hammer_time.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_iron_hammer"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

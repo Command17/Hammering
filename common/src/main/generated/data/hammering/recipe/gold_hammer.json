@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:gold_block"
+    },
+    "x": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "XxX",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hammering:gold_hammer"
+  }
+}

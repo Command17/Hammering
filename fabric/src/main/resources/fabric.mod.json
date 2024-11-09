@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "hammering",
+  "version": "${version}",
+  "name": "Hammering",
+  "description": "Adds hammers, that's it.",
+  "authors": [
+    "Command17"
+  ],
+  "contact": {
+    "homepage": "",
+    "issues": "https://github.com/Command17/Hammering/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/hammering/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "com.github.command17.hammering.fabric.data.HammeringDataGeneration"
+    ],
+    "main": [
+      "com.github.command17.hammering.fabric.HammeringFabric"
+    ],
+    "client": [
+      "com.github.command17.hammering.fabric.client.HammeringFabricClient"
+    ]
+  },
+  "mixins": [
+    "hammering.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "architectury": ">=13.0.8",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.source": "https://github.com/Command17/Hammering"
+      }
+    }
+  }
+}
