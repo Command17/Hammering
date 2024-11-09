@@ -1,5 +1,6 @@
 plugins {
     id 'com.github.johnrengelman.shadow'
+    id 'me.modmuss50.mod-publish-plugin'
 }
 
 version = "${mod_version}+mc${minecraft_version}+neoforge"
@@ -73,4 +74,49 @@ shadowJar {
 
 remapJar {
     input.set shadowJar.archiveFile
+}
+
+var changelogText = rootProject.file("Changelog.md").text
+
+publishMods {
+    file = remapJar.archiveFile
+    modLoaders.add("neoforge")
+    displayName = "Hammering v${project.version}"
+    changelog = changelogText
+
+    if (project.release_type == "alpha") {
+        type = ALPHA
+    } else if (project.release_type == "beta") {
+        type = BETA
+    } else if (project.release_type == "stable") {
+        type = STABLE
+    }
+
+    modrinth {
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        projectId = "mBPfL1U7"
+        minecraftVersions.add(minecraft_version)
+
+        // Architectury
+        requires {
+            id = "lhGA9TYQ"
+        }
+    }
+
+    curseforge {
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        clientRequired = true
+        serverRequired = true
+        javaVersions.add(JavaVersion.VERSION_21)
+        projectId = "1136760"
+        minecraftVersions.add(minecraft_version)
+
+        requires("architectury-api")
+    }
+
+    github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        repository = "Command17/Hammering"
+        commitish = branch
+    }
 }
