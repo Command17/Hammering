@@ -1,39 +1,40 @@
 package com.github.command17.hammering.item;
 
+import com.github.command17.hammering.util.ModTags;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TieredItem;
-import net.minecraft.world.item.component.Tool;
-import net.minecraft.world.level.block.Block;
 
-import java.util.ArrayList;
+public class HammerItem extends Item {
+    private final Tier tier;
 
-public class HammerItem extends TieredItem {
-    public HammerItem(Tier tier, Properties properties) {
-        super(tier, properties.component(DataComponents.TOOL, createToolProperties(tier,
-                BlockTags.MINEABLE_WITH_PICKAXE,
-                BlockTags.MINEABLE_WITH_AXE,
-                BlockTags.MINEABLE_WITH_SHOVEL,
-                BlockTags.MINEABLE_WITH_HOE
-        )));
+    public HammerItem(Tier tier, Properties properties, float durabilityModifier) {
+        super(properties.component(
+                DataComponents.TOOL, tier.createToolProperties(ModTags.BlockTags.MINEABLE_WITH_HAMMER)
+        ).durability((int) (tier.getUses() * durabilityModifier)));
+
+        this.tier = tier;
     }
 
-    @SafeVarargs
-    public static Tool createToolProperties(Tier tier, TagKey<Block>... tagKeys) {
-        ArrayList<Tool.Rule> rules = new ArrayList<>();
+    public HammerItem(Tier tier, Properties properties) {
+        this(tier, properties, 1);
+    }
 
-        rules.add(Tool.Rule.deniesDrops(tier.getIncorrectBlocksForDrops()));
+    public Tier getTier() {
+        return tier;
+    }
 
-        for (TagKey<Block> tagKey: tagKeys) {
-            rules.add(Tool.Rule.minesAndDrops(tagKey, tier.getSpeed()));
-        }
+    @Override
+    public int getEnchantmentValue() {
+        return this.tier.getEnchantmentValue();
+    }
 
-        return new Tool(rules, 1.0F, 1);
+    @Override
+    public boolean isValidRepairItem(ItemStack stack, ItemStack otherStack) {
+        return this.tier.getRepairIngredient().test(otherStack) || super.isValidRepairItem(stack, otherStack);
     }
 
     @Override
