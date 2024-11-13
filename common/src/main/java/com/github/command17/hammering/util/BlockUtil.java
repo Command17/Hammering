@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -47,13 +46,7 @@ public class BlockUtil {
 
 
     public static Stream<BlockPos> findBlocks(ItemStack stack, Player player, BlockPos originPos, Level level) {
-        int enchantmentLevel = 0;
-
-        for (var enchantment: stack.getEnchantments().keySet()) {
-            if (enchantment.value().effects().has(ModEnchantmentEffectComponents.AREA_MINE.get())) {
-                enchantmentLevel += EnchantmentHelper.getItemEnchantmentLevel(enchantment, stack);
-            }
-        }
+        int enchantmentLevel = EnchantmentUtil.getCountOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
 
         if (enchantmentLevel > 0) return findBlocksInRadius(1, enchantmentLevel - 1, player, originPos, level);
 
