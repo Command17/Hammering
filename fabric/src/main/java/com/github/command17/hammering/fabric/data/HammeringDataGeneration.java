@@ -12,5 +12,6 @@ public class HammeringDataGeneration implements DataGeneratorEntrypoint {
         pack.addProvider(ModRecipeProvider::new);
         pack.addProvider(ModAdvancementProvider::new);
         pack.addProvider(ModItemTagProvider::new);
+        pack.addProvider(ModBlockTagProvider::new);
     }
 }
