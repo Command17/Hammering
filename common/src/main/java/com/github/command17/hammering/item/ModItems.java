@@ -15,7 +15,7 @@ public class ModItems {
     public static final RegistrySupplier<Item> NETHERITE_HAMMER = createHammer("netherite_hammer", Tiers.NETHERITE, 4, -2.8f, of().fireResistant());
 
     private static RegistrySupplier<Item> createHammer(String name, Tier tier, int attackDamage, float attackSpeed, Item.Properties properties) {
-        return REGISTRY.register(name, () -> new HammerItem(tier, properties.attributes(DiggerItem.createAttributes(tier, attackDamage, attackSpeed))));
+        return REGISTRY.register(name, () -> new HammerItem(tier, properties.attributes(DiggerItem.createAttributes(tier, attackDamage, attackSpeed)), 2));
     }
 
     private static Item.Properties of() {
