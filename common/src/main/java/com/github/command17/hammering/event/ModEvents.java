@@ -20,13 +20,11 @@ public class ModEvents {
             BlockUtil.findBlocks(stack, player, pos, level).forEach((blockPos) -> {
                 BlockState blockState = level.getBlockState(blockPos);
 
-                if (BlockUtil.canMineOther(stack, state, blockState)) {
-                    blockState.getBlock().playerDestroy(level, player, blockPos, state, level.getBlockEntity(blockPos), stack);
-                    level.destroyBlock(blockPos, false, player);
+                if (blockPos != pos && BlockUtil.canMineOther(stack, state, blockState)) {
+                    blockState.getBlock().playerDestroy(level, player, blockPos, blockState, level.getBlockEntity(blockPos), stack);
 
-                    if (player.getRandom().nextBoolean()) {
-                        stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                    }
+                    level.destroyBlock(blockPos, false, player);
+                    stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
             });
         }
