@@ -22,28 +22,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.DIAMOND_HAMMER.get())
                 .add(ModItems.NETHERITE_HAMMER.get());
 
+        getOrCreateTagBuilder(ModTags.ItemTags.MINING_TOOLS)
+                .forceAddTag(ModTags.ItemTags.HAMMER);
+
         getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
-                .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLD_HAMMER.get())
-                .add(ModItems.DIAMOND_HAMMER.get())
-                .add(ModItems.NETHERITE_HAMMER.get());
+                .forceAddTag(ModTags.ItemTags.HAMMER);
 
         getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLD_HAMMER.get())
-                .add(ModItems.DIAMOND_HAMMER.get())
-                .add(ModItems.NETHERITE_HAMMER.get());
+                .forceAddTag(ModTags.ItemTags.HAMMER);
 
         getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
-                .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLD_HAMMER.get())
-                .add(ModItems.DIAMOND_HAMMER.get())
-                .add(ModItems.NETHERITE_HAMMER.get());
+                .forceAddTag(ModTags.ItemTags.HAMMER);
 
         getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
-                .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLD_HAMMER.get())
-                .add(ModItems.DIAMOND_HAMMER.get())
-                .add(ModItems.NETHERITE_HAMMER.get());
+                .forceAddTag(ModTags.ItemTags.HAMMER);
     }
 }
