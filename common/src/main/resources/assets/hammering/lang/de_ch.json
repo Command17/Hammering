@@ -1,0 +1,15 @@
+{
+  "item.hammering.iron_hammer": "Eisenhammer",
+  "item.hammering.gold_hammer": "Goldhammer",
+  "item.hammering.diamond_hammer": "Diamanthammer",
+  "item.hammering.netherite_hammer": "Netherithammer",
+
+  "itemGroup.hammering.main": "Hammering",
+
+  "advancement.hammering.hammer_time.title": "Hammer Zeit!",
+  "advancement.hammering.hammer_time.info": "Bekomme ein Eisenhammer",
+  "advancement.hammering.hammer_collection.title": "Hammer Kollektion",
+  "advancement.hammering.hammer_collection.info": "Bekomme jeden Hammer",
+
+  "enchantment.hammering.hammering": "Hämmern"
+}
