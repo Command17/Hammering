@@ -1,13 +1,7 @@
-Bumped version to 0.2.0
+Bumped version to 1.0.0
+
+Now stable! (at least I hope so)
 
 Added:
-- MINEABLE_WITH_HAMMER tag (hammering/tags/block/mineable/hammer)
-
-Changed:
-- Doubled Hammer durability
-- Made Hammering enchantment available in enchanting tables and villagers
-- Made hammer mine slower with Hammering (more enchantment levels -> more slower)
-- Fixed duplication bug with Hammering
-
-Removed:
-- Random durability removal with Hammering
+- Added Convention Tags
+- Added Swiss German, Austrian German, Bavarian and Upper Saxon German (translation is the same as the german one)
