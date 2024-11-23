@@ -1,8 +1,5 @@
 {
   "values": [
-    "hammering:iron_hammer",
-    "hammering:gold_hammer",
-    "hammering:diamond_hammer",
-    "hammering:netherite_hammer"
+    "#hammering:hammer"
   ]
 }
