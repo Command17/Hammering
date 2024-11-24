@@ -9,8 +9,8 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 
 public class ModCreativeModeTabs {
@@ -29,7 +29,7 @@ public class ModCreativeModeTabs {
                     // Enchantments
                     display.holders().lookup(Registries.ENCHANTMENT).flatMap((registryLookup) -> registryLookup.get(ModEnchantments.HAMMERING)).ifPresent((enchantment) -> {
                         for (int i = 0; i < enchantment.value().getMaxLevel(); i++) {
-                            output.accept(EnchantedBookItem.createForEnchantment(new EnchantmentInstance(enchantment, i + 1)));
+                            output.accept(EnchantmentHelper.createBook(new EnchantmentInstance(enchantment, i + 1)));
                         }
                     });
                 });
