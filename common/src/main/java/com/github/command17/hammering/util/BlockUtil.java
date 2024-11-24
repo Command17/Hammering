@@ -25,7 +25,6 @@ public class BlockUtil {
         double reach = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
 
         Vec3 combined = eyePosition.add(rotation.x * reach, rotation.y * reach, rotation.z * reach);
-
         BlockHitResult result = level.clip(new ClipContext(player.getEyePosition(), combined, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
 
         if (result.getType() == HitResult.Type.BLOCK) {
