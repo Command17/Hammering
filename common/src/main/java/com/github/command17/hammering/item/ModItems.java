@@ -17,11 +17,15 @@ public class ModItems {
 
     private static RegistrySupplier<Item> createHammer(String name, ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Item.Properties properties) {
         return REGISTRY.register(name,
-                () -> new HammerItem(toolMaterial, attackDamage, attackSpeed, properties.setId(ResourceKey.create(Registries.ITEM, Hammering.resource(name))), 2));
+                () -> new HammerItem(toolMaterial, attackDamage, attackSpeed, properties.setId(key(name)), 2));
     }
 
     private static Item.Properties of() {
         return new Item.Properties();
+    }
+
+    private static ResourceKey<Item> key(String name) {
+        return ResourceKey.create(Registries.ITEM, Hammering.resource(name));
     }
 
     public static void register() {
