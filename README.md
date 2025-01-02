@@ -3,7 +3,7 @@
 ![available_fabric](https://github.com/intergrav/devins-badges/raw/refs/heads/v3/assets/compact/supported/fabric_vector.svg)
 ![available_neoforge](https://raw.githubusercontent.com/intergrav/devins-badges/6bbf631df06444d1f1669f514e32bb5ab93bb0e3/assets/compact/supported/neoforge_vector.svg)
 
-![requires_architectury](https://github.com/intergrav/devins-badges/raw/refs/heads/v3/assets/compact/requires/architectury-api_vector.svg)
+![requires_enchantedbooklib](https://raw.githubusercontent.com/Command17/EnchantedBookLib/main/assets/devins_badges/compact_vector.svg)
 
 ***Fabric also requires Fabric API!***
 
