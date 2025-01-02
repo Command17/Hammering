@@ -52,7 +52,8 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
-    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
+    modImplementation "com.github.command17:enchantedbooklib:${enchantedbooklib_version}+mc${project.minecraft_version}-neoforge"
+    forgeDependencies "blue.endless:jankson:1.2.3"
 
     // Recipe Viewer!!!!
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${project.rei_version}"
@@ -99,9 +100,9 @@ publishMods {
         projectId = "mBPfL1U7"
         minecraftVersions.add(minecraft_version)
 
-        // Architectury
+        // EnchantedBookLib
         requires {
-            id = "lhGA9TYQ"
+            id = "36JtkTh1"
         }
     }
 
@@ -113,7 +114,7 @@ publishMods {
         projectId = "1136760"
         minecraftVersions.add(minecraft_version)
 
-        requires("architectury-api")
+        requires("enchantedbooklib")
     }
 
     github {
