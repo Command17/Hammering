@@ -18,11 +18,14 @@
     "fabric-datagen": [
       "com.github.command17.hammering.fabric.data.HammeringDataGeneration"
     ],
-    "main": [
+    "enchanted-main": [
       "com.github.command17.hammering.fabric.HammeringFabric"
     ],
-    "client": [
+    "enchanted-client": [
       "com.github.command17.hammering.fabric.client.HammeringFabricClient"
+    ],
+    "modmenu": [
+      "com.github.command17.hammering.integration.fabric.modmenu.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -32,7 +35,7 @@
     "fabricloader": ">=0.16.9",
     "minecraft": ">=1.21 <=1.21.1",
     "java": ">=21",
-    "architectury": ">=13.0.8",
+    "enchantedbooklib": ">=0.1.0",
     "fabric-api": "*"
   },
   "suggests": {

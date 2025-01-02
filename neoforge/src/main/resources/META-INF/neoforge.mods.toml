@@ -28,9 +28,9 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.hammering]]
-modId = "architectury"
+modId = "enchantedbooklib"
 type = "required"
-versionRange = "[13.0.8,)"
+versionRange = "[0.1.0,)"
 ordering = "AFTER"
 side = "BOTH"
 

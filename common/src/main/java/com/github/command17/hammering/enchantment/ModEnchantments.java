@@ -5,7 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.enchantment.Enchantment;
 
-public class ModEnchantments {
+public final class ModEnchantments {
     public static final ResourceKey<Enchantment> HAMMERING = of("hammering");
 
     private static ResourceKey<Enchantment> of(String name) {

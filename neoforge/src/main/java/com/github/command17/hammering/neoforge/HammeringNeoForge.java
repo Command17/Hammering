@@ -1,17 +1,15 @@
 package com.github.command17.hammering.neoforge;
 
+import com.github.command17.enchantedbooklib.api.util.EnvSide;
+import com.github.command17.enchantedbooklib.api.util.EnvSideExecutor;
 import com.github.command17.hammering.Hammering;
 import com.github.command17.hammering.client.HammeringClient;
-import dev.architectury.platform.Platform;
 import net.neoforged.fml.common.Mod;
 
 @Mod(Hammering.MOD_ID)
-public class HammeringNeoForge {
+public final class HammeringNeoForge {
     public HammeringNeoForge() {
         Hammering.init();
-
-        if (Platform.getEnv().isClient()) {
-            HammeringClient.init();
-        }
+        EnvSideExecutor.runOn(EnvSide.CLIENT, HammeringClient::init);
     }
 }
