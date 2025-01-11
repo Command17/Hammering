@@ -15,7 +15,6 @@ public final class ModEnchantmentEffectComponents {
 
     public static void register() {
         REGISTRY.register();
-
         Hammering.LOGGER.info("Registered Enchantment Effect Components.");
     }
 }

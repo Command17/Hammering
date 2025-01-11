@@ -10,6 +10,6 @@ import net.neoforged.fml.common.Mod;
 public final class HammeringNeoForge {
     public HammeringNeoForge() {
         Hammering.init();
-        EnvSideExecutor.runOn(EnvSide.CLIENT, HammeringClient::init);
+        EnvSideExecutor.runOn(EnvSide.CLIENT, () -> HammeringClient::init);
     }
 }

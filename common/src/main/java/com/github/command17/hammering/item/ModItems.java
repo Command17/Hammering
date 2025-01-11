@@ -23,7 +23,6 @@ public class ModItems {
 
     public static void register() {
         REGISTRY.register();
-
         Hammering.LOGGER.info("Registered Items.");
     }
 }

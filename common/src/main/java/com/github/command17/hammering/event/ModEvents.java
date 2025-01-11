@@ -1,7 +1,9 @@
 package com.github.command17.hammering.event;
 
+import com.github.command17.enchantedbooklib.api.event.EventManager;
 import com.github.command17.enchantedbooklib.api.event.annotation.EventListener;
 import com.github.command17.enchantedbooklib.api.events.level.BlockEvent;
+import com.github.command17.hammering.Hammering;
 import com.github.command17.hammering.util.BlockUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -32,5 +34,10 @@ public class ModEvents {
                 }
             });
         }
+    }
+
+    public static void register() {
+        EventManager.registerListeners(ModEvents.class);
+        Hammering.LOGGER.info("Registered Events.");
     }
 }

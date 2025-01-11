@@ -37,7 +37,6 @@ public class ModCreativeModeTabs {
 
     public static void register() {
         REGISTRY.register();
-
         Hammering.LOGGER.info("Registered Creative Mode Tabs.");
     }
 }

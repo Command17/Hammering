@@ -1,7 +1,6 @@
 package com.github.command17.hammering;
 
 import com.github.command17.enchantedbooklib.api.config.LibConfigs;
-import com.github.command17.enchantedbooklib.api.event.EventManager;
 import com.github.command17.hammering.config.ModConfig;
 import com.github.command17.hammering.enchantment.ModEnchantments;
 import com.github.command17.hammering.enchantment.effect.ModEnchantmentEffectComponents;
@@ -24,8 +23,7 @@ public final class Hammering {
         ModCreativeModeTabs.register();
         ModEnchantmentEffectComponents.register();
         ModEnchantments.register();
-
-        EventManager.registerListeners(ModEvents.class);
+        ModEvents.register();
 
         LOGGER.info("Initialized.");
     }
