@@ -95,8 +95,11 @@ subprojects {
     }
 }
 
+var changelogText = rootProject.file("Changelog.md").text
+
 publishMods {
     github {
+        changelog = changelogText
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "Command17/Hammering"
         commitish = branch
