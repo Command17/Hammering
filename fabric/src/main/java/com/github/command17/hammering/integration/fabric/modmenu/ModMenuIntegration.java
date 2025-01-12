@@ -8,7 +8,7 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 public final class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        if (PlatformHelper.isModLoaded("cloth_config")) {
+        if (PlatformHelper.isModLoaded("cloth-config")) {
             return (parent) -> ClothConfigIntegration.createConfigScreen().setParentScreen(parent).build();
         }
 
