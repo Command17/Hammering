@@ -1,5 +1,6 @@
-Bumped version to 1.0.1
+Bumped version to 2.0.0
 
 Changed:
-- Version naming
-- Made backwards compatible with 1.21
+- Switched to EnchantedBookLib
+- Added config
+- fixed hammers having no attributes

@@ -1,5 +1,6 @@
 package com.github.command17.hammering.util;
 
+import com.github.command17.hammering.Hammering;
 import com.github.command17.hammering.enchantment.effect.ModEnchantmentEffectComponents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,7 +16,9 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.stream.Stream;
 
-public class BlockUtil {
+public final class BlockUtil {
+    private BlockUtil() {}
+
     public static Stream<BlockPos> findBlocksInRadius(int radius, int depth, Player player, BlockPos originPos, Level level) {
         Stream<BlockPos> potentialBrokenBlocks = Stream.of();
 
@@ -48,7 +51,7 @@ public class BlockUtil {
     public static Stream<BlockPos> findBlocks(ItemStack stack, Player player, BlockPos originPos, Level level) {
         int enchantmentLevel = EnchantmentUtil.getCountOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
 
-        if (enchantmentLevel > 0) return findBlocksInRadius(1, enchantmentLevel - 1, player, originPos, level);
+        if (enchantmentLevel > 0) return findBlocksInRadius(Hammering.CONFIG.areaMineRadius.get(), (enchantmentLevel * Hammering.CONFIG.areaMineDepthPerLevel.get() - 1), player, originPos, level);
 
         return Stream.of();
     }

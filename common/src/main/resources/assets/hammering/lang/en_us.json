@@ -4,12 +4,16 @@
   "item.hammering.diamond_hammer": "Diamond Hammer",
   "item.hammering.netherite_hammer": "Netherite Hammer",
 
-  "itemGroup.hammering.main": "Hammering",
+  "itemGroup.hammering.main": "Hammers",
 
   "advancement.hammering.hammer_time.title": "Hammer Time!",
   "advancement.hammering.hammer_time.info": "Get an Iron Hammer",
   "advancement.hammering.hammer_collection.title": "Hammer Collection",
   "advancement.hammering.hammer_collection.info": "Get every Hammer",
 
-  "enchantment.hammering.hammering": "Hammering"
+  "enchantment.hammering.hammering": "Hammering",
+
+  "title.hammering.config": "Hammering Config",
+  "field.config.hammering.areaMineRadius": "Area Mine Radius",
+  "field.config.hammering.areaMineDepthPerLevel": "Area Mine Depth (Per Level)"
 }

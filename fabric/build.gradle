@@ -62,11 +62,13 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
 
-    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+    modImplementation "com.github.command17:enchantedbooklib:${enchantedbooklib_version}+mc${project.minecraft_version}-fabric"
 
     // Recipe Viewer (with recipe exporting!!!!)
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-    modRuntimeOnly("com.terraformersmc:modmenu:${project.modmenu_version}")
+
+    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    modImplementation "me.shedaniel.cloth:cloth-config:${cloth_config_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -111,9 +113,9 @@ publishMods {
         projectId = "mBPfL1U7"
         minecraftVersions.add(minecraft_version)
 
-        // Architectury
+        // EnchantedBookLib
         requires {
-            id = "lhGA9TYQ"
+            id = "36JtkTh1"
         }
 
         // Fabric API
@@ -130,12 +132,11 @@ publishMods {
         projectId = "1136760"
         minecraftVersions.add(minecraft_version)
 
-        requires("architectury-api", "fabric-api")
+        requires("enchantedbooklib", "fabric-api")
     }
 
     github {
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
-        repository = "Command17/Hammering"
-        commitish = branch
+        parent project(":").tasks.named("publishGithub")
     }
 }

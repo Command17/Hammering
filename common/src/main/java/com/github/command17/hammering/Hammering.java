@@ -1,5 +1,7 @@
 package com.github.command17.hammering;
 
+import com.github.command17.enchantedbooklib.api.config.LibConfigs;
+import com.github.command17.hammering.config.ModConfig;
 import com.github.command17.hammering.enchantment.ModEnchantments;
 import com.github.command17.hammering.enchantment.effect.ModEnchantmentEffectComponents;
 import com.github.command17.hammering.event.ModEvents;
@@ -9,9 +11,10 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
-public class Hammering {
+public final class Hammering {
     public static final String MOD_ID = "hammering";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final ModConfig CONFIG = LibConfigs.registerConfig(resource("config"), new ModConfig());
 
     public static void init() {
         LOGGER.info("Initializing...");
