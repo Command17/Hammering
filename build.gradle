@@ -107,6 +107,7 @@ publishMods {
             type = STABLE
         }
 
+        displayName = "Hammering v${project.version}"
         changelog = changelogText
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "Command17/Hammering"
