@@ -99,6 +99,14 @@ var changelogText = rootProject.file("Changelog.md").text
 
 publishMods {
     github {
+        if (project.release_type == "alpha") {
+            type = ALPHA
+        } else if (project.release_type == "beta") {
+            type = BETA
+        } else if (project.release_type == "stable") {
+            type = STABLE
+        }
+
         changelog = changelogText
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "Command17/Hammering"
