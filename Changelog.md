@@ -1,6 +1,4 @@
-Bumped version to 2.0.0
+Bumped version to 2.0.0-build.a1
 
-Changed:
-- Switched to EnchantedBookLib
-- Added config
-- fixed hammers having no attributes
+Added:
+- Port to 1.21.4
