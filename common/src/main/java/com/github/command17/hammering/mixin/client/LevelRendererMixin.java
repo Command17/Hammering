@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
+import net.minecraft.client.renderer.ShapeRenderer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -24,12 +25,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LevelRendererMixin {
     @Shadow @Final private Minecraft minecraft;
 
-    @Shadow
-    private static void renderShape(PoseStack poseStack, VertexConsumer vertexConsumer, VoxelShape voxelShape, double d, double e, double f, float g, float h, float i, float j) {
-    }
-
     @Inject(method = "renderHitOutline", at = @At("HEAD"))
-    private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, CallbackInfo ci) {
+    private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, int i, CallbackInfo ci) {
         if (this.minecraft.player == null || this.minecraft.level == null) {
             return;
         }
@@ -57,17 +54,14 @@ public class LevelRendererMixin {
 
                         if (BlockUtil.canMineOther(stack, targetState, blockState)) {
                             if (blockPos != targetPos) {
-                                renderShape(
+                                ShapeRenderer.renderShape(
                                         poseStack,
                                         vertexConsumer,
                                         outlineShape,
                                         (double) blockPos.getX() - cameraX,
                                         (double) blockPos.getY() - cameraY,
                                         (double) blockPos.getZ() - cameraZ,
-                                        0,
-                                        0,
-                                        0,
-                                        0.4f
+                                        i
                                 );
                             }
                         }

@@ -3,9 +3,7 @@
   "category": "misc",
   "cookingtime": 260,
   "experience": 0.8,
-  "ingredient": {
-    "item": "hammering:iron_hammer"
-  },
+  "ingredient": "hammering:iron_hammer",
   "result": {
     "id": "minecraft:iron_ingot"
   }

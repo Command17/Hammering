@@ -1,40 +1,27 @@
 package com.github.command17.hammering.item;
 
 import com.github.command17.hammering.util.ModTags;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 
 public class HammerItem extends Item {
-    private final Tier tier;
+    private final ToolMaterial toolMaterial;
 
-    public HammerItem(Tier tier, Properties properties, float durabilityModifier) {
-        super(properties.component(
-                DataComponents.TOOL, tier.createToolProperties(ModTags.BlockTags.MINEABLE_WITH_HAMMER)
-        ).durability((int) (tier.getUses() * durabilityModifier)));
+    public HammerItem(ToolMaterial tier, int attackDamage, float attackSpeed, Properties properties, float durabilityModifier) {
+        super(tier.applyToolProperties(properties, ModTags.BlockTags.MINEABLE_WITH_HAMMER, attackDamage, attackSpeed).durability((int) (tier.durability() * durabilityModifier)));
 
-        this.tier = tier;
+        this.toolMaterial = tier;
     }
 
-    public HammerItem(Tier tier, Properties properties) {
-        this(tier, properties, 1);
+    public HammerItem(ToolMaterial tier, int attackDamage, float attackSpeed, Properties properties) {
+        this(tier, attackDamage, attackSpeed, properties, 1);
     }
 
-    public Tier getTier() {
-        return tier;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.tier.getEnchantmentValue();
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack otherStack) {
-        return this.tier.getRepairIngredient().test(otherStack) || super.isValidRepairItem(stack, otherStack);
+    public ToolMaterial getToolMaterial() {
+        return toolMaterial;
     }
 
     @Override
