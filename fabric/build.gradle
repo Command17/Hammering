@@ -136,7 +136,7 @@ publishMods {
         supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
         // Architectury, Fabric API, Forge Config API Port
-        requires("architectury", "fabric-api", "forge-config-api-port-fabric")
+        requires("architectury-api", "fabric-api", "forge-config-api-port-fabric")
 
         // Configured
         optional("configured")

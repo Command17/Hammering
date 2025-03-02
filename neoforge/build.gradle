@@ -112,7 +112,7 @@ publishMods {
         supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
         // Architectury
-        requires("architectury")
+        requires("architectury-api")
 
         // Configured
         optional("configured")
