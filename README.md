@@ -17,7 +17,7 @@ If you don't know Hammered, this mod basically adds hammers, that's it.
 
 To be more specific:
 - Iron Hammer
-- Gold Hammer
+- Golden Hammer
 - Diamond Hammer
 - Netherite Hammer
 - Hammering Enchantment
