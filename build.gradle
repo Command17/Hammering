@@ -1,5 +1,5 @@
 plugins {
-    id 'dev.architectury.loom' version '1.7-SNAPSHOT' apply false
+    id 'dev.architectury.loom' version '1.9-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
     id "me.modmuss50.mod-publish-plugin" version "0.7.4"
@@ -32,6 +32,7 @@ subprojects {
 
         mavenCentral()
 
+        // REI
         maven {
             url "https://maven.shedaniel.me/"
         }
@@ -42,11 +43,13 @@ subprojects {
             url = 'https://maven.parchmentmc.org'
         }
 
+        // FCAPI
         maven {
-            name = "ModRepo"
-            url = uri("https://repo.repsy.io/mvn/command17/modrepo")
+            name = "Fuzs Mod Resources"
+            url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
         }
 
+        // Mod Menu
         maven {
             name = "Terraformers"
             url = "https://maven.terraformersmc.com/"

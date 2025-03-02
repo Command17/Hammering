@@ -1,6 +1,6 @@
 {
   "item.hammering.iron_hammer": "Eisenhammer",
-  "item.hammering.gold_hammer": "Goldhammer",
+  "item.hammering.golden_hammer": "Goldhammer",
   "item.hammering.diamond_hammer": "Diamanthammer",
   "item.hammering.netherite_hammer": "Netherithammer",
 
@@ -11,5 +11,6 @@
   "advancement.hammering.hammer_collection.title": "Hammer Kollektion",
   "advancement.hammering.hammer_collection.info": "Bekomme jeden Hammer",
 
-  "enchantment.hammering.hammering": "Hämmern"
+  "enchantment.hammering.hammering": "Hämmern",
+  "enchantment.hammering.hammering.desc": "Gibt dir die Möglickeit, einen großen Bereich auf einmal abzubauen."
 }

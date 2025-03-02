@@ -7,7 +7,7 @@
     "client.LevelRendererMixin"
   ],
   "mixins": [
-    "ItemMixin"
+    "ItemMixin",
   ],
   "injectors": {
     "defaultRequire": 1

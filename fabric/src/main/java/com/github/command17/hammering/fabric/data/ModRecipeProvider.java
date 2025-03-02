@@ -20,7 +20,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     @Override
     public void buildRecipes(RecipeOutput recipeOutput) {
         simpleHammerRecipe(ModItems.IRON_HAMMER.get(), RecipeCategory.TOOLS, Items.IRON_INGOT, Items.IRON_BLOCK).save(recipeOutput);
-        simpleHammerRecipe(ModItems.GOLD_HAMMER.get(), RecipeCategory.TOOLS, Items.GOLD_INGOT, Items.GOLD_BLOCK).save(recipeOutput);
+        simpleHammerRecipe(ModItems.GOLDEN_HAMMER.get(), RecipeCategory.TOOLS, Items.GOLD_INGOT, Items.GOLD_BLOCK).save(recipeOutput);
         simpleHammerRecipe(ModItems.DIAMOND_HAMMER.get(), RecipeCategory.TOOLS, Items.DIAMOND, Items.DIAMOND_BLOCK).save(recipeOutput);
 
         SmithingTransformRecipeBuilder.smithing(
@@ -32,7 +32,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .save(recipeOutput, Hammering.resource("smithing_netherite_hammer"));
 
         simpleHammerSmeltBackToResourceRecipe(Items.IRON_INGOT, RecipeCategory.MISC, ModItems.IRON_HAMMER.get(), recipeOutput);
-        simpleHammerSmeltBackToResourceRecipe(Items.GOLD_INGOT, RecipeCategory.MISC, ModItems.GOLD_HAMMER.get(), recipeOutput);
+        simpleHammerSmeltBackToResourceRecipe(Items.GOLD_INGOT, RecipeCategory.MISC, ModItems.GOLDEN_HAMMER.get(), recipeOutput);
     }
 
     private void simpleHammerSmeltBackToResourceRecipe(Item output, RecipeCategory category, Item input, RecipeOutput recipeOutput) {

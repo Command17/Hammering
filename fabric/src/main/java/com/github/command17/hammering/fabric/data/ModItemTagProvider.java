@@ -1,6 +1,5 @@
 package com.github.command17.hammering.fabric.data;
 
-import com.github.command17.enchantedbooklib.api.util.LibTags;
 import com.github.command17.hammering.item.ModItems;
 import com.github.command17.hammering.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -19,11 +18,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void addTags(HolderLookup.Provider provider) {
         getOrCreateTagBuilder(ModTags.ItemTags.HAMMER)
                 .add(ModItems.IRON_HAMMER.get())
-                .add(ModItems.GOLD_HAMMER.get())
+                .add(ModItems.GOLDEN_HAMMER.get())
                 .add(ModItems.DIAMOND_HAMMER.get())
                 .add(ModItems.NETHERITE_HAMMER.get());
 
-        getOrCreateTagBuilder(LibTags.ItemTags.MINING_TOOLS)
+        getOrCreateTagBuilder(ModTags.ItemTags.MINING_TOOLS)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
         getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
