@@ -37,13 +37,23 @@ public final class Hammering {
     }
 
     private static void buildCreativeTabContent() {
+        var search = CreativeTabRegistry.defer(CreativeModeTabs.SEARCH);
         var tools = CreativeTabRegistry.defer(CreativeModeTabs.TOOLS_AND_UTILITIES);
 
-        CreativeTabRegistry.modify(tools, (f, output, b) -> {
-            if (CONFIG.showTab.get()) {
-                return;
-            }
+        if (CONFIG.showTab.get()) {
+            return;
+        }
 
+        // Food
+        CreativeTabRegistry.modify(tools, (f, output, b) -> {
+            output.acceptAfter(Items.IRON_HOE, ModItems.IRON_HAMMER.get());
+            output.acceptAfter(Items.GOLDEN_HOE, ModItems.GOLDEN_HAMMER.get());
+            output.acceptAfter(Items.DIAMOND_HOE, ModItems.DIAMOND_HAMMER.get());
+            output.acceptAfter(Items.NETHERITE_HOE, ModItems.NETHERITE_HAMMER.get());
+        });
+
+        // Search
+        CreativeTabRegistry.modify(search, (f, output, b) -> {
             output.acceptAfter(Items.IRON_HOE, ModItems.IRON_HAMMER.get());
             output.acceptAfter(Items.GOLDEN_HOE, ModItems.GOLDEN_HAMMER.get());
             output.acceptAfter(Items.DIAMOND_HOE, ModItems.DIAMOND_HAMMER.get());

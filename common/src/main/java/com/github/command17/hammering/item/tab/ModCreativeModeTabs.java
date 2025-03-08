@@ -13,7 +13,7 @@ import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 
-public class ModCreativeModeTabs {
+public final class ModCreativeModeTabs {
     private static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Hammering.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
     public static final RegistrySupplier<CreativeModeTab> MAIN = REGISTRY.register("main",
