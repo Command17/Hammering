@@ -1,8 +1,4 @@
-***Bumped version to 3.1.0***
+***Bumped version to 3.1.1***
 
 **Fixed:**
-- Hammers not showing up in the search tab
-- Fixed Mixins
-
-**Changed:**
-- Some internal refactoring
+- Outline not showing when using hammers without Hammering
