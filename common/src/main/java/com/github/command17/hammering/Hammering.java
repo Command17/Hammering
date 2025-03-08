@@ -8,6 +8,7 @@ import com.github.command17.hammering.event.ModEvents;
 import com.github.command17.hammering.item.ModItems;
 import com.github.command17.hammering.item.tab.ModCreativeModeTabs;
 import com.mojang.logging.LogUtils;
+import dev.architectury.platform.Platform;
 import dev.architectury.registry.CreativeTabRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -37,7 +38,6 @@ public final class Hammering {
     }
 
     private static void buildCreativeTabContent() {
-        var search = CreativeTabRegistry.defer(CreativeModeTabs.SEARCH);
         var tools = CreativeTabRegistry.defer(CreativeModeTabs.TOOLS_AND_UTILITIES);
 
         if (CONFIG.showTab.get()) {
@@ -52,13 +52,17 @@ public final class Hammering {
             output.acceptAfter(Items.NETHERITE_HOE, ModItems.NETHERITE_HAMMER.get());
         });
 
-        // Search
-        CreativeTabRegistry.modify(search, (f, output, b) -> {
-            output.acceptAfter(Items.IRON_HOE, ModItems.IRON_HAMMER.get());
-            output.acceptAfter(Items.GOLDEN_HOE, ModItems.GOLDEN_HAMMER.get());
-            output.acceptAfter(Items.DIAMOND_HOE, ModItems.DIAMOND_HAMMER.get());
-            output.acceptAfter(Items.NETHERITE_HOE, ModItems.NETHERITE_HAMMER.get());
-        });
+        if (Platform.isFabric()) {
+            var search = CreativeTabRegistry.defer(CreativeModeTabs.SEARCH);
+
+            // Search
+            CreativeTabRegistry.modify(search, (f, output, b) -> {
+                output.acceptAfter(Items.IRON_HOE, ModItems.IRON_HAMMER.get());
+                output.acceptAfter(Items.GOLDEN_HOE, ModItems.GOLDEN_HAMMER.get());
+                output.acceptAfter(Items.DIAMOND_HOE, ModItems.DIAMOND_HAMMER.get());
+                output.acceptAfter(Items.NETHERITE_HOE, ModItems.NETHERITE_HAMMER.get());
+            });
+        }
     }
 
     public static ResourceLocation resource(String path) {
