@@ -54,7 +54,7 @@ public abstract class LevelRendererMixin {
                         BlockState blockState = this.minecraft.level.getBlockState(blockPos);
                         VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
 
-                        if (BlockUtil.canMineOther(stack, targetState, blockState) && blockPos.equals(pos)) {
+                        if (BlockUtil.canMineOther(stack, targetState, blockState) && !blockPos.equals(pos)) {
                             renderShape(
                                     poseStack,
                                     vertexConsumer,
