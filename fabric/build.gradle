@@ -64,9 +64,9 @@ dependencies {
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcapi_version}"
 
     // Recipe Viewer (with recipe exporting!!!!)
-    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
-    modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+    modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')

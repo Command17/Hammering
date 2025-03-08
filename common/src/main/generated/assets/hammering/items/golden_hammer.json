@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "hammering:item/gold_hammer"
+    "model": "hammering:item/golden_hammer"
   }
 }

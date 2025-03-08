@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LevelRendererMixin {
     @Shadow @Final private Minecraft minecraft;
 
-    @Inject(method = "renderHitOutline", at = @At("HEAD"))
+    @Inject(method = "renderHitOutline", at = @At("HEAD"), cancellable = true)
     private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, int i, CallbackInfo ci) {
         if (this.minecraft.player == null || this.minecraft.level == null) {
             return;
@@ -53,19 +53,18 @@ public class LevelRendererMixin {
                         VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
 
                         if (BlockUtil.canMineOther(stack, targetState, blockState)) {
-                            if (blockPos != targetPos) {
-                                ShapeRenderer.renderShape(
-                                        poseStack,
-                                        vertexConsumer,
-                                        outlineShape,
-                                        (double) blockPos.getX() - cameraX,
-                                        (double) blockPos.getY() - cameraY,
-                                        (double) blockPos.getZ() - cameraZ,
-                                        i
-                                );
-                            }
+                            ShapeRenderer.renderShape(
+                                    poseStack,
+                                    vertexConsumer,
+                                    outlineShape,
+                                    (double) blockPos.getX() - cameraX,
+                                    (double) blockPos.getY() - cameraY,
+                                    (double) blockPos.getZ() - cameraZ,
+                                    i
+                            );
                         }
                     });
+                    ci.cancel();
                 }
             }
         }
