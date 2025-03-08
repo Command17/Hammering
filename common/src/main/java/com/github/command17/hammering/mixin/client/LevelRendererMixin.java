@@ -3,15 +3,12 @@ package com.github.command17.hammering.mixin.client;
 import com.github.command17.hammering.util.BlockUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -23,8 +20,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.stream.Stream;
-
 @Mixin(LevelRenderer.class)
 public abstract class LevelRendererMixin {
     @Shadow @Final private Minecraft minecraft;
@@ -32,12 +27,6 @@ public abstract class LevelRendererMixin {
     @Shadow
     private static void renderShape(PoseStack poseStack, VertexConsumer vertexConsumer, VoxelShape voxelShape, double d, double e, double f, float g, float h, float i, float j) {
     }
-
-    @Shadow @Final private Int2ObjectMap<BlockDestructionProgress> destroyingBlocks;
-
-    @Shadow public abstract void destroyBlockProgress(int breakerId, BlockPos pos, int progress);
-
-    @Shadow public abstract void blockChanged(BlockGetter level, BlockPos pos, BlockState oldState, BlockState newState, int flags);
 
     @Inject(method = "renderHitOutline", at = @At("HEAD"))
     private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, CallbackInfo ci) {
