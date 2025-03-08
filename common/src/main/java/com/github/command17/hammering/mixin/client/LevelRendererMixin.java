@@ -39,7 +39,7 @@ public abstract class LevelRendererMixin {
 
     @Shadow public abstract void blockChanged(BlockGetter level, BlockPos pos, BlockState oldState, BlockState newState, int flags);
 
-    @Inject(method = "renderHitOutline", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "renderHitOutline", at = @At("HEAD"))
     private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, CallbackInfo ci) {
         if (this.minecraft.player == null || this.minecraft.level == null) {
             return;
