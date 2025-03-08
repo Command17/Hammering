@@ -11,6 +11,7 @@ import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -21,6 +22,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.stream.Stream;
 
 @Mixin(LevelRenderer.class)
 public abstract class LevelRendererMixin {
@@ -34,6 +37,8 @@ public abstract class LevelRendererMixin {
 
     @Shadow public abstract void destroyBlockProgress(int breakerId, BlockPos pos, int progress);
 
+    @Shadow public abstract void blockChanged(BlockGetter level, BlockPos pos, BlockState oldState, BlockState newState, int flags);
+
     @Inject(method = "renderHitOutline", at = @At("HEAD"), cancellable = true)
     private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, CallbackInfo ci) {
         if (this.minecraft.player == null || this.minecraft.level == null) {
@@ -41,7 +46,6 @@ public abstract class LevelRendererMixin {
         }
 
         ItemStack stack = this.minecraft.player.getMainHandItem();
-
         if (this.minecraft.hitResult instanceof BlockHitResult target) {
             BlockPos targetPos = target.getBlockPos();
             BlockState targetState = this.minecraft.level.getBlockState(targetPos);
@@ -61,7 +65,7 @@ public abstract class LevelRendererMixin {
                         BlockState blockState = this.minecraft.level.getBlockState(blockPos);
                         VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
 
-                        if (BlockUtil.canMineOther(stack, targetState, blockState)) {
+                        if (BlockUtil.canMineOther(stack, targetState, blockState) && blockPos.equals(pos)) {
                             renderShape(
                                     poseStack,
                                     vertexConsumer,
@@ -76,7 +80,6 @@ public abstract class LevelRendererMixin {
                             );
                         }
                     });
-                    ci.cancel();
                 }
             }
         }
