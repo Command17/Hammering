@@ -20,8 +20,7 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
-        archivesName = "$rootProject.archives_name-$project.name"
+        archivesName = archives_name
     }
 
     repositories {
@@ -33,6 +32,7 @@ subprojects {
 
         mavenCentral()
 
+        // REI
         maven {
             url "https://maven.shedaniel.me/"
         }
@@ -43,11 +43,13 @@ subprojects {
             url = 'https://maven.parchmentmc.org'
         }
 
+        // FCAPI
         maven {
-            name = "ModRepo"
-            url = uri("https://repo.repsy.io/mvn/command17/modrepo")
+            name = "Fuzs Mod Resources"
+            url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
         }
 
+        // Mod Menu
         maven {
             name = "Terraformers"
             url = "https://maven.terraformersmc.com/"

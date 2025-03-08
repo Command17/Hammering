@@ -3,8 +3,6 @@ plugins {
     id 'me.modmuss50.mod-publish-plugin'
 }
 
-archivesBaseName = archives_name
-
 version = "${mod_version}+mc${minecraft_version}-fabric"
 
 architectury {
@@ -62,13 +60,13 @@ dependencies {
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
 
-    modImplementation "com.github.command17:enchantedbooklib:${enchantedbooklib_version}+mc${project.minecraft_version}-fabric"
+    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcapi_version}"
 
     // Recipe Viewer (with recipe exporting!!!!)
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
     modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-    modImplementation "me.shedaniel.cloth:cloth-config:${cloth_config_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -111,16 +109,21 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         projectId = "mBPfL1U7"
-        minecraftVersions.add(minecraft_version)
+        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
-        // EnchantedBookLib
+        // Architectury
         requires {
-            id = "36JtkTh1"
+            id = "lhGA9TYQ"
         }
 
         // Fabric API
         requires {
             id = "P7dR8mSH"
+        }
+
+        // Forge Config API Port
+        requires {
+            id = "ohNO6lps"
         }
     }
 
@@ -130,9 +133,13 @@ publishMods {
         serverRequired = true
         javaVersions.add(JavaVersion.VERSION_21)
         projectId = "1136760"
-        minecraftVersions.add(minecraft_version)
+        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
-        requires("enchantedbooklib", "fabric-api")
+        // Architectury, Fabric API, Forge Config API Port
+        requires("architectury-api", "fabric-api", "forge-config-api-port-fabric")
+
+        // Configured
+        optional("configured")
     }
 
     github {

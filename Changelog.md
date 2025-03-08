@@ -1,4 +1,8 @@
-Bumped version to 2.0.0-build.a1
+***Bumped version to 3.1.0***
 
-Added:
-- Port to 1.21.4
+**Fixed:**
+- Hammers not showing up in the search tab
+- Fixed Mixins
+
+**Changed:**
+- Some internal refactoring

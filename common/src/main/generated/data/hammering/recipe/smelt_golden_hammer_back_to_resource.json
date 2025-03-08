@@ -3,7 +3,9 @@
   "category": "misc",
   "cookingtime": 260,
   "experience": 0.8,
-  "ingredient": "hammering:gold_hammer",
+  "ingredient": {
+    "item": "hammering:golden_hammer"
+  },
   "result": {
     "id": "minecraft:gold_ingot"
   }

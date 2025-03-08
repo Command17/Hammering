@@ -3,8 +3,6 @@ plugins {
     id 'me.modmuss50.mod-publish-plugin'
 }
 
-archivesBaseName = archives_name
-
 version = "${mod_version}+mc${minecraft_version}-neoforge"
 
 architectury {
@@ -52,8 +50,7 @@ repositories {
 dependencies {
     neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
-    modImplementation "com.github.command17:enchantedbooklib:${enchantedbooklib_version}+mc${project.minecraft_version}-neoforge"
-    forgeDependencies "blue.endless:jankson:1.2.3"
+    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
 
     // Recipe Viewer!!!!
     modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${project.rei_version}"
@@ -98,11 +95,11 @@ publishMods {
     modrinth {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         projectId = "mBPfL1U7"
-        minecraftVersions.add(minecraft_version)
+        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
-        // EnchantedBookLib
+        // Architectury
         requires {
-            id = "36JtkTh1"
+            id = "lhGA9TYQ"
         }
     }
 
@@ -112,9 +109,13 @@ publishMods {
         serverRequired = true
         javaVersions.add(JavaVersion.VERSION_21)
         projectId = "1136760"
-        minecraftVersions.add(minecraft_version)
+        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
 
-        requires("enchantedbooklib")
+        // Architectury
+        requires("architectury-api")
+
+        // Configured
+        optional("configured")
     }
 
     github {

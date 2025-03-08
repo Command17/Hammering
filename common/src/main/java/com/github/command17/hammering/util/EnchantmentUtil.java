@@ -7,7 +7,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 public final class EnchantmentUtil {
     private EnchantmentUtil() {}
 
-    public static int getCountOfEnchantmentComponent(ItemStack stack, DataComponentType<?> componentType) {
+    public static int getTotalOfEnchantmentComponent(ItemStack stack, DataComponentType<?> componentType) {
         int enchantmentLevel = 0;
 
         for (var enchantment: stack.getEnchantments().keySet()) {

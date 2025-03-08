@@ -1,16 +1,31 @@
 package com.github.command17.hammering.config;
 
-import com.github.command17.enchantedbooklib.api.config.ConfigData;
-import com.github.command17.enchantedbooklib.api.config.annotation.Config;
-import com.github.command17.enchantedbooklib.api.config.annotation.Entry;
-import com.github.command17.enchantedbooklib.api.config.entry.IntConfigEntry;
-import com.github.command17.hammering.Hammering;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
-@Config(name = Hammering.MOD_ID + "-config")
-public class ModConfig extends ConfigData {
-    @Entry(name = "areaMineRadius", comment = "Radius of AreaMine (or Hammering). Default Value: 1", synced = true)
-    public IntConfigEntry areaMineRadius = new IntConfigEntry(1);
+import java.util.List;
 
-    @Entry(name = "areaMineDepthPerLevel", comment = "Increase of depth of AreaMine (or Hammering) per enchantment level. Default Value: 1", synced = true)
-    public IntConfigEntry areaMineDepthPerLevel = new IntConfigEntry(1);
+public class ModConfig {
+    // General
+    public final ModConfigSpec.ConfigValue<Boolean> showTab;
+
+    // Tools
+    public final ModConfigSpec.ConfigValue<Integer> hammerDurabilityMultiplier;
+
+    public ModConfig(ModConfigSpec.Builder builder) {
+        this.showTab = builder
+                .comment("If true, sorts all the mod's items into a creative tab.")
+                .define(key("general", "showTab"), false);
+
+        this.hammerDurabilityMultiplier = builder
+                .comment("Durability modifier of all hammer items from this mod.")
+                .define(key("tools", "hammerDurabilityMultiplier"), 2);
+    }
+
+    private static List<String> key(String category, String field) {
+        return List.of(category, field);
+    }
+
+    private static List<String> key(String category, String subcategory, String field) {
+        return List.of(category, subcategory, field);
+    }
 }

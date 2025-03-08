@@ -21,16 +21,13 @@ public final class BlockUtil {
 
     public static Stream<BlockPos> findBlocksInRadius(int radius, int depth, Player player, BlockPos originPos, Level level) {
         Stream<BlockPos> potentialBrokenBlocks = Stream.of();
-
         Vec3 eyePosition = player.getEyePosition();
         Vec3 rotation = player.getViewVector(1);
 
         double reach = player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE);
 
         Vec3 combined = eyePosition.add(rotation.x * reach, rotation.y * reach, rotation.z * reach);
-
         BlockHitResult result = level.clip(new ClipContext(player.getEyePosition(), combined, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
-
         if (result.getType() == HitResult.Type.BLOCK) {
             Direction side = result.getDirection();
 
@@ -49,9 +46,8 @@ public final class BlockUtil {
 
 
     public static Stream<BlockPos> findBlocks(ItemStack stack, Player player, BlockPos originPos, Level level) {
-        int enchantmentLevel = EnchantmentUtil.getCountOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
-
-        if (enchantmentLevel > 0) return findBlocksInRadius(Hammering.CONFIG.areaMineRadius.get(), (enchantmentLevel * Hammering.CONFIG.areaMineDepthPerLevel.get() - 1), player, originPos, level);
+        int enchantmentLevel = EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
+        if (enchantmentLevel > 0) return findBlocksInRadius(Hammering.SERVER_CONFIG.areaMineRadius.get(), (enchantmentLevel * Hammering.SERVER_CONFIG.areaMineDepthPerLevel.get() - 1), player, originPos, level);
 
         return Stream.of();
     }

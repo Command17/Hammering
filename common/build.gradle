@@ -8,7 +8,6 @@ dependencies {
     // Do NOT use other classes from Fabric Loader.
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
-    modImplementation "com.github.command17:enchantedbooklib:${enchantedbooklib_version}+mc${project.minecraft_version}-common"
-
-    modCompileOnly "me.shedaniel.cloth:cloth-config:${cloth_config_version}"
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:${fcapi_version}"
 }

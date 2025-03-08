@@ -10,6 +10,21 @@ import net.minecraft.world.level.block.Block;
 public final class ModTags {
     private ModTags() {}
 
+    public static class ItemTags {
+        private ItemTags() {}
+
+        public static final TagKey<Item> HAMMER = tag("hammer");
+        public static final TagKey<Item> MINING_TOOLS = conventionTag("tools/mining_tools");
+
+        private static TagKey<Item> tag(String name) {
+            return TagKey.create(Registries.ITEM, Hammering.resource(name));
+        }
+
+        private static TagKey<Item> conventionTag(String name) {
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));
+        }
+    }
+
     public static class BlockTags {
         private BlockTags() {}
 
@@ -21,20 +36,6 @@ public final class ModTags {
 
         private static TagKey<Block> conventionTag(String name) {
             return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", name));
-        }
-    }
-
-    public static class ItemTags {
-        private ItemTags() {}
-
-        public static final TagKey<Item> HAMMER = tag("hammer");
-
-        private static TagKey<Item> tag(String name) {
-            return TagKey.create(Registries.ITEM, Hammering.resource(name));
-        }
-
-        private static TagKey<Item> conventionTag(String name) {
-            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));
         }
     }
 }

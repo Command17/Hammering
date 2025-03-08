@@ -21,7 +21,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerators generator) {
         handheld(ModItems.IRON_HAMMER.get(), generator);
-        handheld(ModItems.GOLD_HAMMER.get(), generator);
+        handheld(ModItems.GOLDEN_HAMMER.get(), generator);
         handheld(ModItems.DIAMOND_HAMMER.get(), generator);
         handheld(ModItems.NETHERITE_HAMMER.get(), generator);
     }

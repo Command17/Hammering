@@ -1,7 +1,7 @@
-// 1.21.4	-999999999-01-01T00:00:00	Hammering/Tags for minecraft:item
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/c/tags/item/tools/mining_tools.json
-912a18e0e2db5bf90cd630788a7bce721bd3abc0 data/hammering/tags/item/hammer.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/durability.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/mining.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/mining_loot.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/vanishing.json
+// 1.21.1	2025-02-27T18:19:53.8112145	Hammering/Tags for minecraft:item
+7cf6db82f8eb8c657d57e5c823e96a173c0a0da0 data\hammering\tags\item\hammer.json
+1c4474b56de3a278a7af4d995f31eaec4785b2c6 data\minecraft\tags\item\enchantable\vanishing.json
+1c4474b56de3a278a7af4d995f31eaec4785b2c6 data\minecraft\tags\item\enchantable\mining.json
+1c4474b56de3a278a7af4d995f31eaec4785b2c6 data\c\tags\item\tools\mining_tools.json
+1c4474b56de3a278a7af4d995f31eaec4785b2c6 data\minecraft\tags\item\enchantable\durability.json
+1c4474b56de3a278a7af4d995f31eaec4785b2c6 data\minecraft\tags\item\enchantable\mining_loot.json

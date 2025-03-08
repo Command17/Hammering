@@ -20,6 +20,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
         super(output, registryLookup);
     }
 
+    @SuppressWarnings("removal")
     @Override
     public void generateAdvancement(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer) {
         AdvancementHolder hammerTime = Advancement.Builder.advancement()
@@ -31,7 +32,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true,
                         true,
                         false))
-                .parent(ResourceLocation.withDefaultNamespace("adventure/root")) // No idea how to replace this
+                .parent(ResourceLocation.withDefaultNamespace("adventure/root"))
                 .addCriterion("has_iron_hammer", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.IRON_HAMMER.get()))
                 .save(consumer, Hammering.resource("hammer_time").toString());
 
@@ -47,7 +48,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .parent(hammerTime)
                 .rewards(AdvancementRewards.Builder.experience(500))
                 .addCriterion("has_hammers", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ModItems.NETHERITE_HAMMER.get(), ModItems.IRON_HAMMER.get(), ModItems.GOLD_HAMMER.get(), ModItems.DIAMOND_HAMMER.get()))
+                        ModItems.NETHERITE_HAMMER.get(), ModItems.IRON_HAMMER.get(), ModItems.GOLDEN_HAMMER.get(), ModItems.DIAMOND_HAMMER.get()))
                 .save(consumer, Hammering.resource("hammer_collection").toString());
 
 
