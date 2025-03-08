@@ -25,14 +25,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LevelRendererMixin {
     @Shadow @Final private Minecraft minecraft;
 
-    @Inject(method = "renderHitOutline", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "renderHitOutline", at = @At("HEAD"))
     private void hammering$renderHitOutline(PoseStack poseStack, VertexConsumer vertexConsumer, Entity entity, double cameraX, double cameraY, double cameraZ, BlockPos pos, BlockState state, int i, CallbackInfo ci) {
         if (this.minecraft.player == null || this.minecraft.level == null) {
             return;
         }
 
         ItemStack stack = this.minecraft.player.getMainHandItem();
-
         if (this.minecraft.hitResult instanceof BlockHitResult target) {
             BlockPos targetPos = target.getBlockPos();
             BlockState targetState = this.minecraft.level.getBlockState(targetPos);
@@ -52,7 +51,7 @@ public class LevelRendererMixin {
                         BlockState blockState = this.minecraft.level.getBlockState(blockPos);
                         VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
 
-                        if (BlockUtil.canMineOther(stack, targetState, blockState)) {
+                        if (BlockUtil.canMineOther(stack, targetState, blockState) && !blockPos.equals(pos)) {
                             ShapeRenderer.renderShape(
                                     poseStack,
                                     vertexConsumer,
@@ -64,7 +63,6 @@ public class LevelRendererMixin {
                             );
                         }
                     });
-                    ci.cancel();
                 }
             }
         }
