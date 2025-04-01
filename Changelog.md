@@ -1,6 +1,7 @@
 ***Bumped version to 3.2.0***
 
 **Added:**
+- Support for Tree Harvester (and probably similar mods)
 - Netherite hammers now have 1 extra durability modifier (changeable in the config)
 
 **Changed:**
