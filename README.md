@@ -44,4 +44,13 @@ Hammering has 3 levels, means on level 3 it mines a 3x3x3 area.
 
 ## Other 📚
 
+This mod is configurable! You can install [Configured](https://www.curseforge.com/minecraft/mc-mods/configured) to change the config in-game.
+
 Found an issue or do you have feedback? Make an issue on the [issue tracker](https://github.com/Command17/Hammering/issues)!
+
+---
+
+## My Other Mods 📦
+
+| [![deliciouscake_title](https://raw.githubusercontent.com/Command17/DeliciousCake/main/assets/deliciouscake_title.png)](https://modrinth.com/mod/delicious-cake) |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
