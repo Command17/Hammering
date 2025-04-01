@@ -37,7 +37,6 @@ public final class BlockUtil {
 
             BlockPos begin = new BlockPos(doX ? -radius : 0, doY ? -radius : 0, doZ ? -radius : 0);
             BlockPos end = new BlockPos(doX ? radius : depth * -side.getStepX(), doY ? radius : depth * -side.getStepY(), doZ ? radius : depth * -side.getStepZ());
-
             return BlockPos.betweenClosedStream(originPos.offset(begin), originPos.offset(end));
         }
 
@@ -48,7 +47,6 @@ public final class BlockUtil {
     public static Stream<BlockPos> findBlocks(ItemStack stack, Player player, BlockPos originPos, Level level) {
         int enchantmentLevel = EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
         if (enchantmentLevel > 0) return findBlocksInRadius(Hammering.SERVER_CONFIG.areaMineRadius.get(), (enchantmentLevel * Hammering.SERVER_CONFIG.areaMineDepthPerLevel.get() - 1), player, originPos, level);
-
         return Stream.of();
     }
 
