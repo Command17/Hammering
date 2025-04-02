@@ -31,7 +31,7 @@ public abstract class PlayerMixin extends LivingEntity {
             float baseModifier = 1f / (EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get()) + 1);
             float efficiencyModifier = 1;
             if (this.getAttributeValue(Attributes.MINING_EFFICIENCY) > 1) {
-                efficiencyModifier *= 0.85f;
+                efficiencyModifier *= 0.95f;
             }
 
             cir.setReturnValue(cir.getReturnValueF() * baseModifier * efficiencyModifier);
