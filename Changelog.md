@@ -5,5 +5,5 @@
 - Netherite hammers now have 1 extra durability modifier (changeable in the config)
 
 **Changed:**
-- Hammering will now make mining a bit slower with Efficiency or Haste (~15%)
+- Hammering will now make mining a bit slower with Efficiency or Haste (~5%)
 - Netherite hammers are now a bit slower
