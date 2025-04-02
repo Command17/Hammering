@@ -20,7 +20,6 @@ public final class BlockUtil {
     private BlockUtil() {}
 
     public static Stream<BlockPos> findBlocksInRadius(int radius, int depth, Player player, BlockPos originPos, Level level) {
-        Stream<BlockPos> potentialBrokenBlocks = Stream.of();
         Vec3 eyePosition = player.getEyePosition();
         Vec3 rotation = player.getViewVector(1);
 
@@ -40,7 +39,7 @@ public final class BlockUtil {
             return BlockPos.betweenClosedStream(originPos.offset(begin), originPos.offset(end));
         }
 
-        return potentialBrokenBlocks;
+        return Stream.of();
     }
 
 
