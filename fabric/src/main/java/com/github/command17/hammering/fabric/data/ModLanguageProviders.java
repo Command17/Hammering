@@ -10,6 +10,8 @@ import net.minecraft.core.HolderLookup;
 import java.util.concurrent.CompletableFuture;
 
 public final class ModLanguageProviders {
+    private ModLanguageProviders() {}
+
     private static String translationKey(String prefix, String suffix) {
         return prefix + Hammering.MOD_ID + suffix;
     }
