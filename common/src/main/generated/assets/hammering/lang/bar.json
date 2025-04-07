@@ -9,5 +9,7 @@
   "item.hammering.golden_hammer": "Goldhammer",
   "item.hammering.iron_hammer": "Eisenhammer",
   "item.hammering.netherite_hammer": "Netherithammer",
-  "itemGroup.hammering.main": "Hämmer"
+  "itemGroup.hammering.main": "Hämmer",
+  "tag.block.hammering.mineable.hammer": "Abbaubar mit Hammer",
+  "tag.item.hammering.hammer": "Hammer"
 }

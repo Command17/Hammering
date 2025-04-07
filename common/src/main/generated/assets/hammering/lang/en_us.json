@@ -9,5 +9,7 @@
   "item.hammering.golden_hammer": "Golden Hammer",
   "item.hammering.iron_hammer": "Iron Hammer",
   "item.hammering.netherite_hammer": "Netherite Hammer",
-  "itemGroup.hammering.main": "Hammers"
+  "itemGroup.hammering.main": "Hammers",
+  "tag.block.hammering.mineable.hammer": "Mineable With Hammer",
+  "tag.item.hammering.hammer": "Hammer"
 }
