@@ -6,4 +6,4 @@
 
 **Changed:**
 - Hammering will now make mining a bit slower with Efficiency or Haste (~5%)
-- Netherite hammers are now a bit slower
+- Netherite hammers are now a bit stronger
