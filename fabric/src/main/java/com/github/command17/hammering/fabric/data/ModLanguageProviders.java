@@ -3,6 +3,7 @@ package com.github.command17.hammering.fabric.data;
 import com.github.command17.hammering.Hammering;
 import com.github.command17.hammering.enchantment.ModEnchantments;
 import com.github.command17.hammering.item.ModItems;
+import com.github.command17.hammering.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.minecraft.core.HolderLookup;
@@ -41,6 +42,10 @@ public final class ModLanguageProviders {
             // Enchantments
             builder.addEnchantment(ModEnchantments.HAMMERING, "Hammering");
             builder.add(translationKey("enchantment.", ".hammering.desc"), "Allows you to mine a large area at once.");
+
+            // Tags
+            builder.add(ModTags.ItemTags.HAMMER, "Hammer");
+            builder.add(ModTags.BlockTags.MINEABLE_WITH_HAMMER, "Mineable With Hammer");
         }
     }
 
@@ -69,6 +74,9 @@ public final class ModLanguageProviders {
             // Enchantments
             builder.addEnchantment(ModEnchantments.HAMMERING, "Hämmern");
             builder.add(translationKey("enchantment.", ".hammering.desc"), "Gibt dir die Möglickeit, einen großen Bereich auf einmal abzubauen.");
+
+            builder.add(ModTags.ItemTags.HAMMER, "Hammer");
+            builder.add(ModTags.BlockTags.MINEABLE_WITH_HAMMER, "Abbaubar mit Hammer");
         }
     }
 }
