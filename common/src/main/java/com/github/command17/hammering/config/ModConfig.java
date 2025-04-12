@@ -9,8 +9,7 @@ public class ModConfig {
     public final ModConfigSpec.ConfigValue<Boolean> showTab;
 
     // Tools
-    public final ModConfigSpec.ConfigValue<Integer> hammerDurabilityMultiplier;
-    public final ModConfigSpec.ConfigValue<Integer> netheriteHammerExtraDurabilityMultiplier;
+    public final ModConfigSpec.ConfigValue<Float> hammerDurabilityMultiplier;
 
     public ModConfig(ModConfigSpec.Builder builder) {
         this.showTab = builder
@@ -19,11 +18,7 @@ public class ModConfig {
 
         this.hammerDurabilityMultiplier = builder
                 .comment("Durability modifier of all hammer items from this mod.")
-                .define(key("tools", "hammerDurabilityMultiplier"), 2);
-
-        this.netheriteHammerExtraDurabilityMultiplier = builder
-                .comment("Extra durability modifier of all netherite hammer items from this mod.")
-                .define(key("tools", "hammerDurabilityMultiplier"), 1);
+                .define(key("tools", "hammerDurabilityMultiplier"), 2.5f);
     }
 
     private static List<String> key(String category, String field) {
