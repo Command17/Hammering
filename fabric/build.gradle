@@ -16,7 +16,7 @@ loom {
     runs {
         // This adds a new gradle task that runs the datagen API: "gradlew runDatagen"
         datagen {
-            inherit client
+            inherit server
             name "Data Generation"
             vmArg "-Dfabric-api.datagen"
             vmArg "-Dfabric-api.datagen.output-dir=${generatedResources}"
@@ -64,8 +64,7 @@ dependencies {
     modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcapi_version}"
 
     // Recipe Viewer (with recipe exporting!!!!)
-    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-
+    modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
     modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }

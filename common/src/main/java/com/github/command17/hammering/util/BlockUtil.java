@@ -20,7 +20,6 @@ public final class BlockUtil {
     private BlockUtil() {}
 
     public static Stream<BlockPos> findBlocksInRadius(int radius, int depth, Player player, BlockPos originPos, Level level) {
-        Stream<BlockPos> potentialBrokenBlocks = Stream.of();
         Vec3 eyePosition = player.getEyePosition();
         Vec3 rotation = player.getViewVector(1);
 
@@ -37,18 +36,16 @@ public final class BlockUtil {
 
             BlockPos begin = new BlockPos(doX ? -radius : 0, doY ? -radius : 0, doZ ? -radius : 0);
             BlockPos end = new BlockPos(doX ? radius : depth * -side.getStepX(), doY ? radius : depth * -side.getStepY(), doZ ? radius : depth * -side.getStepZ());
-
             return BlockPos.betweenClosedStream(originPos.offset(begin), originPos.offset(end));
         }
 
-        return potentialBrokenBlocks;
+        return Stream.of();
     }
 
 
     public static Stream<BlockPos> findBlocks(ItemStack stack, Player player, BlockPos originPos, Level level) {
         int enchantmentLevel = EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
         if (enchantmentLevel > 0) return findBlocksInRadius(Hammering.SERVER_CONFIG.areaMineRadius.get(), (enchantmentLevel * Hammering.SERVER_CONFIG.areaMineDepthPerLevel.get() - 1), player, originPos, level);
-
         return Stream.of();
     }
 

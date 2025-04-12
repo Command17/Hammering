@@ -1,0 +1,15 @@
+{
+  "advancement.hammering.hammer_collection.info": "Get every Hammer",
+  "advancement.hammering.hammer_collection.title": "Hammer Collection",
+  "advancement.hammering.hammer_time.info": "Get an Iron Hammer",
+  "advancement.hammering.hammer_time.title": "Hammer Time!",
+  "enchantment.hammering.hammering": "Hammering",
+  "enchantment.hammering.hammering.desc": "Allows you to mine a large area at once.",
+  "item.hammering.diamond_hammer": "Diamond Hammer",
+  "item.hammering.golden_hammer": "Golden Hammer",
+  "item.hammering.iron_hammer": "Iron Hammer",
+  "item.hammering.netherite_hammer": "Netherite Hammer",
+  "itemGroup.hammering.main": "Hammers",
+  "tag.block.hammering.mineable.hammer": "Mineable With Hammer",
+  "tag.item.hammering.hammer": "Hammer"
+}

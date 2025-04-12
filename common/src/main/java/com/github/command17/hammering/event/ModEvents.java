@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 public final class ModEvents {
     private static EventResult breakBlock(Level level, BlockPos pos, BlockState state, ServerPlayer player, @Nullable IntValue xp) {
         ItemStack stack = player.getMainHandItem();
-        if (!player.isShiftKeyDown() && !player.isCreative() && !stack.isEmpty()) {
+        if (!player.isShiftKeyDown() && !player.isCreative() && !stack.isEmpty() && stack.isEnchanted()) {
             BlockUtil.findBlocks(stack, player, pos, level).forEach((blockPos) -> {
                 BlockState blockState = level.getBlockState(blockPos);
                 if (blockPos != pos && BlockUtil.canMineOther(stack, state, blockState)) {

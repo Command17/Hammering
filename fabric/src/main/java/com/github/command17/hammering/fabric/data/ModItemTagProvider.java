@@ -36,5 +36,19 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
+
+        // Tools
+
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .forceAddTag(ModTags.ItemTags.HAMMER);
+
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .forceAddTag(ModTags.ItemTags.HAMMER);
+
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .forceAddTag(ModTags.ItemTags.HAMMER);
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .forceAddTag(ModTags.ItemTags.HAMMER);
     }
 }

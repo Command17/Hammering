@@ -9,7 +9,7 @@ public class ModConfig {
     public final ModConfigSpec.ConfigValue<Boolean> showTab;
 
     // Tools
-    public final ModConfigSpec.ConfigValue<Integer> hammerDurabilityMultiplier;
+    public final ModConfigSpec.ConfigValue<Float> hammerDurabilityMultiplier;
 
     public ModConfig(ModConfigSpec.Builder builder) {
         this.showTab = builder
@@ -18,7 +18,7 @@ public class ModConfig {
 
         this.hammerDurabilityMultiplier = builder
                 .comment("Durability modifier of all hammer items from this mod.")
-                .define(key("tools", "hammerDurabilityMultiplier"), 2);
+                .define(key("tools", "hammerDurabilityMultiplier"), 2.5f);
     }
 
     private static List<String> key(String category, String field) {
