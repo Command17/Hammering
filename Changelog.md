@@ -2,8 +2,8 @@
 
 **Added:**
 - Support for Tree Harvester (and probably similar mods)
-- Netherite hammers now have 1 extra durability modifier (changeable in the config)
 
 **Changed:**
-- Hammering will now make mining a bit slower with Efficiency or Haste (~5%)
+- Hammering will now make mining a bit slower with Efficiency or Haste (~4%)
 - Netherite hammers are now a bit stronger
+- All hammers now have a default durability modifier of 2.5
