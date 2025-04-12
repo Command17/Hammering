@@ -9,7 +9,6 @@ public final class EnchantmentUtil {
 
     public static int getTotalOfEnchantmentComponent(ItemStack stack, DataComponentType<?> componentType) {
         int enchantmentLevel = 0;
-
         for (var enchantment: stack.getEnchantments().keySet()) {
             if (enchantment.value().effects().has(componentType)) {
                 enchantmentLevel += EnchantmentHelper.getItemEnchantmentLevel(enchantment, stack);
