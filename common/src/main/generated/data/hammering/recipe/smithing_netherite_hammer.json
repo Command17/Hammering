@@ -3,7 +3,6 @@
   "addition": "minecraft:netherite_block",
   "base": "hammering:diamond_hammer",
   "result": {
-    "count": 1,
     "id": "hammering:netherite_hammer"
   },
   "template": "minecraft:netherite_upgrade_smithing_template"

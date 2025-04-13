@@ -21,6 +21,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Iterator;
+
 @Mixin(LevelRenderer.class)
 public class LevelRendererMixin {
     @Shadow @Final private Minecraft minecraft;
@@ -42,27 +44,32 @@ public class LevelRendererMixin {
                         return;
                     }
 
-                    BlockUtil.findBlocks(
+                    Iterator<BlockPos> blockIterator = BlockUtil.findBlocks(
                             stack,
                             this.minecraft.player,
                             targetPos,
                             this.minecraft.level
-                    ).forEach((blockPos) -> {
-                        BlockState blockState = this.minecraft.level.getBlockState(blockPos);
-                        VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
+                    ).iterator();
 
-                        if (BlockUtil.canMineOther(stack, targetState, blockState) && !blockPos.equals(pos)) {
-                            ShapeRenderer.renderShape(
-                                    poseStack,
-                                    vertexConsumer,
-                                    outlineShape,
-                                    (double) blockPos.getX() - cameraX,
-                                    (double) blockPos.getY() - cameraY,
-                                    (double) blockPos.getZ() - cameraZ,
-                                    i
-                            );
-                        }
-                    });
+                    if (blockIterator.hasNext()) {
+                        do {
+                            BlockPos blockPos = blockIterator.next();
+                            BlockState blockState = this.minecraft.level.getBlockState(blockPos);
+                            VoxelShape outlineShape = blockState.getShape(this.minecraft.level, blockPos, CollisionContext.of(entity));
+
+                            if (BlockUtil.canMineOther(stack, targetState, blockState) && !blockPos.equals(pos)) {
+                                ShapeRenderer.renderShape(
+                                        poseStack,
+                                        vertexConsumer,
+                                        outlineShape,
+                                        (double) blockPos.getX() - cameraX,
+                                        (double) blockPos.getY() - cameraY,
+                                        (double) blockPos.getZ() - cameraZ,
+                                        i
+                                );
+                            }
+                        } while (blockIterator.hasNext());
+                    }
                 }
             }
         }

@@ -1,5 +1,9 @@
-// 1.21.1	2025-04-07T12:52:09.2574038	Hammering/Model Definitions
-a1fb1378a42b4c97f61b08f3c27350201a59df8e assets\hammering\models\item\iron_hammer.json
-5ed7ef133cb79c701905799af561fd5039796c1c assets\hammering\models\item\golden_hammer.json
-52b58d0e09377fc61c5cdc561b0d2f2385fa191c assets\hammering\models\item\diamond_hammer.json
-fdcc4fa7643ad70e3b8273c512b1448844ea26a9 assets\hammering\models\item\netherite_hammer.json
+// 1.21.5	-999999999-01-01T00:00:00	Hammering/Model Definitions
+fdb359206fe900755899ef462a9ecb8c392c7348 assets/hammering/items/diamond_hammer.json
+ba725523d59ff3e52e0dc0622ed14165d16b8ae5 assets/hammering/items/golden_hammer.json
+905233194b53f30026d394cad92b5810d66469fc assets/hammering/items/iron_hammer.json
+75e41115efcaf5ad270ccd25c5b4f4f9fb9e4ebd assets/hammering/items/netherite_hammer.json
+52b58d0e09377fc61c5cdc561b0d2f2385fa191c assets/hammering/models/item/diamond_hammer.json
+5ed7ef133cb79c701905799af561fd5039796c1c assets/hammering/models/item/golden_hammer.json
+a1fb1378a42b4c97f61b08f3c27350201a59df8e assets/hammering/models/item/iron_hammer.json
+fdcc4fa7643ad70e3b8273c512b1448844ea26a9 assets/hammering/models/item/netherite_hammer.json

@@ -26,7 +26,7 @@ public abstract class PlayerMixin extends LivingEntity {
 
     @Inject(method = "getDestroySpeed", at = @At("RETURN"), cancellable = true)
     private void hammering$modifyDestroySpeed(BlockState state, CallbackInfoReturnable<Float> cir) {
-        ItemStack stack = this.getInventory().getSelected();
+        ItemStack stack = this.getInventory().getSelectedItem();
         if (!stack.isEmpty() && stack.isEnchanted()) {
             float baseModifier = 1f / (EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get()) + 1);
             float efficiencyModifier = 1;

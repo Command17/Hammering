@@ -11,8 +11,11 @@ public class HammerItem extends Item {
     private final ToolMaterial toolMaterial;
 
     public HammerItem(ToolMaterial tier, int attackDamage, float attackSpeed, Properties properties, float durabilityModifier) {
-        super(tier.applyToolProperties(properties, ModTags.BlockTags.MINEABLE_WITH_HAMMER, attackDamage, attackSpeed).durability((int) (tier.durability() * durabilityModifier)));
-
+        super(
+                properties
+                        .tool(tier, ModTags.BlockTags.MINEABLE_WITH_HAMMER, attackDamage, attackSpeed, 0)
+                        .durability((int) (tier.durability() * durabilityModifier))
+        );
         this.toolMaterial = tier;
     }
 
@@ -22,11 +25,6 @@ public class HammerItem extends Item {
 
     public ToolMaterial getToolMaterial() {
         return toolMaterial;
-    }
-
-    @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity enemy, LivingEntity entity) {
-        return true;
     }
 
     @Override

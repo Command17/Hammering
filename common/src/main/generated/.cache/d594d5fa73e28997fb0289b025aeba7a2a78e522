@@ -1,4 +1,4 @@
-// 1.21.4	-999999999-01-01T00:00:00	Hammering/hammering:recipes
+// 1.21.5	-999999999-01-01T00:00:00	Hammering/hammering:recipes
 2463652e88a049c28cbbd895ee332075b1c8838e data/hammering/advancement/recipes/misc/blast_golden_hammer_back_to_resource.json
 7bf059988271cfd1aaca610f81e1ecc97c8feeff data/hammering/advancement/recipes/misc/blast_iron_hammer_back_to_resource.json
 25c9fe6c70e6fcaf03a9ba66fdf141b52e76ef6e data/hammering/advancement/recipes/misc/smelt_golden_hammer_back_to_resource.json
@@ -14,4 +14,4 @@ e636f942253efb1a28a3bb88f012a9e7643bebbc data/hammering/recipe/golden_hammer.jso
 f17acad7951667333e4545cdbf7af8d207eb1dad data/hammering/recipe/iron_hammer.json
 6a778f69595bdf49ad1d703b3d013a80c05ab838 data/hammering/recipe/smelt_golden_hammer_back_to_resource.json
 97beeeb2516562fa18795c2153bf76a2f8dacb70 data/hammering/recipe/smelt_iron_hammer_back_to_resource.json
-f09331c166c266019de3305dc0d041229401d450 data/hammering/recipe/smithing_netherite_hammer.json
+e229452cd95ce7554f297c32847d27fda88f9f63 data/hammering/recipe/smithing_netherite_hammer.json
