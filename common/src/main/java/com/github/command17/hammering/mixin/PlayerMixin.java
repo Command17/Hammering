@@ -1,7 +1,9 @@
 package com.github.command17.hammering.mixin;
 
+import com.github.command17.hammering.Hammering;
 import com.github.command17.hammering.enchantment.effect.ModEnchantmentEffectComponents;
 import com.github.command17.hammering.util.EnchantmentUtil;
+import com.github.command17.hammering.util.ModTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -28,10 +30,11 @@ public abstract class PlayerMixin extends LivingEntity {
     private void hammering$modifyDestroySpeed(BlockState state, CallbackInfoReturnable<Float> cir) {
         ItemStack stack = this.getInventory().getSelected();
         if (!stack.isEmpty() && stack.isEnchanted()) {
-            float baseModifier = 1f / (EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get()) + 1);
+            int level = EnchantmentUtil.getTotalOfEnchantmentComponent(stack, ModEnchantmentEffectComponents.AREA_MINE.get());
+            float baseModifier = 1f / (level + 1);
             float efficiencyModifier = 1;
-            if (this.getAttributeValue(Attributes.MINING_EFFICIENCY) > 1) {
-                efficiencyModifier *= 0.96f;
+            if (level > 0 && this.getAttributeValue(Attributes.MINING_EFFICIENCY) > 1) {
+                efficiencyModifier *= Hammering.SERVER_CONFIG.areaMineEfficiencyDebuff.get();
             }
 
             cir.setReturnValue(cir.getReturnValueF() * baseModifier * efficiencyModifier);

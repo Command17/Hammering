@@ -8,6 +8,7 @@ public class ModServerConfig {
     // Enchantments
     public final ModConfigSpec.ConfigValue<Integer> areaMineRadius;
     public final ModConfigSpec.ConfigValue<Integer> areaMineDepthPerLevel;
+    public final ModConfigSpec.ConfigValue<Float> areaMineEfficiencyDebuff;
 
     public ModServerConfig(ModConfigSpec.Builder builder) {
         this.areaMineRadius = builder
@@ -17,6 +18,10 @@ public class ModServerConfig {
         this.areaMineDepthPerLevel = builder
                 .comment("Increase of depth of AreaMine (or Hammering) per enchantment level.")
                 .define(key("enchantments", "areaMineDepthPerLevel"), 1);
+
+        this.areaMineEfficiencyDebuff = builder
+                .comment("Efficiency modifier when using AreaMine (or Hammering).")
+                .define(key("enchantments", "areaMineEfficiencyDebuff"), 0.96f);
     }
 
     private static List<String> key(String category, String field) {
