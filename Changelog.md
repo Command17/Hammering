@@ -1,9 +1,4 @@
-***Bumped version to 3.2.0***
-
-**Added:**
-- Support for Tree Harvester (and probably similar mods)
+***Bumped version to 3.2.1***
 
 **Changed:**
-- Hammering will now make mining a bit slower with Efficiency or Haste (~4%)
-- Netherite hammers are now a bit stronger
-- All hammers now have a default durability modifier of 2.5
+- Efficiency modifier is now configurable and works on with hammering
