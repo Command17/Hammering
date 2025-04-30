@@ -1,4 +1,4 @@
-***Bumped version to 3.2.0-build.a1***
+***Bumped version to 3.2.1***
 
-**Added:**
-- Support for mc1.21.5 (Spring to life!)
+**Changed:**
+- Efficiency modifier is now configurable and works on with hammering
