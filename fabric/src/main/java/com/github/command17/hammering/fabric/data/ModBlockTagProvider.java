@@ -15,10 +15,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateTagBuilder(ModTags.BlockTags.MINEABLE_WITH_HAMMER)
+        valueLookupBuilder(ModTags.BlockTags.MINEABLE_WITH_HAMMER)
                 .forceAddTag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .forceAddTag(BlockTags.MINEABLE_WITH_AXE)
-                .forceAddTag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .forceAddTag(BlockTags.MINEABLE_WITH_HOE);
+                .addTag(BlockTags.MINEABLE_WITH_AXE)
+                .addTag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .addTag(BlockTags.MINEABLE_WITH_HOE);
     }
 }

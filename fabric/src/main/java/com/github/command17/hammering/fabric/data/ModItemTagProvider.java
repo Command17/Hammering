@@ -16,39 +16,39 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        getOrCreateTagBuilder(ModTags.ItemTags.HAMMER)
+        valueLookupBuilder(ModTags.ItemTags.HAMMER)
                 .add(ModItems.IRON_HAMMER.get())
                 .add(ModItems.GOLDEN_HAMMER.get())
                 .add(ModItems.DIAMOND_HAMMER.get())
                 .add(ModItems.NETHERITE_HAMMER.get());
 
-        getOrCreateTagBuilder(ModTags.ItemTags.MINING_TOOLS)
+        valueLookupBuilder(ModTags.ItemTags.MINING_TOOLS)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.MINING_ENCHANTABLE)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.DURABILITY_ENCHANTABLE)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.VANISHING_ENCHANTABLE)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
         // Tools
 
-        getOrCreateTagBuilder(ItemTags.AXES)
+        valueLookupBuilder(ItemTags.AXES)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.SHOVELS)
+        valueLookupBuilder(ItemTags.SHOVELS)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.HOES)
+        valueLookupBuilder(ItemTags.HOES)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
 
-        getOrCreateTagBuilder(ItemTags.PICKAXES)
+        valueLookupBuilder(ItemTags.PICKAXES)
                 .forceAddTag(ModTags.ItemTags.HAMMER);
     }
 }

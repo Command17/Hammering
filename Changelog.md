@@ -1,4 +1,4 @@
-***Bumped version to 3.2.1-build.a1***
+***Bumped version to 3.2.1-build.b1***
 
 **Changed:**
-- Efficiency modifier is now configurable and works on with hammering
+- Updated to **1.21.6**
