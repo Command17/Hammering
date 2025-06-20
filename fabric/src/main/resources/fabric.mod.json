@@ -32,7 +32,7 @@
     "fabricloader": ">=0.16.13",
     "minecraft": "1.21.6",
     "java": ">=21",
-    "architectury": ">=17.0.4",
+    "architectury": ">=17.0.6",
     "fabric-api": "*",
     "forgeconfigapiport": ">=21.6.2"
   },
