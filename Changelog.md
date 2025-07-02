@@ -1,4 +1,4 @@
-***Bumped version to 3.2.1-build.b1***
+***Bumped version to 3.2.1-build.b2***
 
 **Changed:**
-- Updated to **1.21.6**
+- Added support for 1.21.7
