@@ -1,4 +1,4 @@
-***Bumped version to 3.2.1-build.b2***
+***Bumped version to 3.2.1-build.b3***
 
 **Changed:**
-- Fixed 1.21.7 support on **NeoForge**
+- Added support for 1.21.8
