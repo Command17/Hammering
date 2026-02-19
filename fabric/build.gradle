@@ -3,14 +3,10 @@ plugins {
     id 'me.modmuss50.mod-publish-plugin'
 }
 
-version = "${mod_version}+mc${minecraft_version}-fabric"
-
 architectury {
     platformSetupLoomIde()
     fabric()
 }
-
-var generatedResources = project(":common").file("src/main/generated")
 
 loom {
     runs {
@@ -19,21 +15,10 @@ loom {
             inherit client
             name "Data Generation"
             vmArg "-Dfabric-api.datagen"
-            vmArg "-Dfabric-api.datagen.output-dir=${generatedResources}"
+            vmArg "-Dfabric-api.datagen.output-dir=${project.generatedResources}"
             vmArg "-Dfabric-api.datagen.modid=hammering"
 
             runDir "build/datagen"
-        }
-    }
-}
-
-// Add the generated resources to the main source set
-sourceSets {
-    main {
-        resources {
-            srcDirs += [
-                    generatedResources
-            ]
         }
     }
 }
@@ -59,13 +44,12 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
 
     modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
-
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
-    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcapi_version}"
+    modImplementation "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${fcapip_version}"
 
-    // Recipe Viewer (with recipe exporting!!!!)
-    //modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
-    modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
+    //modRuntimeOnly "dev.emi:emi-fabric:${emi_version}"
+    modRuntimeOnly "com.terraformersmc:modmenu:${modmenu_version}"
+    modRuntimeOnly "maven.modrinth:carpet:${carpet_mod_version}"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
@@ -86,63 +70,4 @@ shadowJar {
 
 remapJar {
     input.set shadowJar.archiveFile
-}
-
-var changelogText = rootProject.file("Changelog.md").text
-
-publishMods {
-    file = remapJar.archiveFile
-    modLoaders.add("fabric")
-    modLoaders.add("quilt")
-    displayName = "Hammering v${project.version}"
-    changelog = changelogText
-
-    if (project.release_type == "alpha") {
-        type = ALPHA
-    } else if (project.release_type == "beta") {
-        type = BETA
-    } else if (project.release_type == "stable") {
-        type = STABLE
-    }
-
-    modrinth {
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
-        projectId = "mBPfL1U7"
-        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
-
-        // Architectury
-        requires {
-            id = "lhGA9TYQ"
-        }
-
-        // Fabric API
-        requires {
-            id = "P7dR8mSH"
-        }
-
-        // Forge Config API Port
-        requires {
-            id = "ohNO6lps"
-        }
-    }
-
-    curseforge {
-        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
-        clientRequired = true
-        serverRequired = true
-        javaVersions.add(JavaVersion.VERSION_21)
-        projectId = "1136760"
-        supported_minecraft_versions.split(",").each { v -> minecraftVersions.add(v)}
-
-        // Architectury, Fabric API, Forge Config API Port
-        requires("architectury-api", "fabric-api", "forge-config-api-port-fabric")
-
-        // Configured
-        optional("configured")
-    }
-
-    github {
-        accessToken = providers.environmentVariable("GITHUB_TOKEN")
-        parent project(":").tasks.named("publishGithub")
-    }
 }

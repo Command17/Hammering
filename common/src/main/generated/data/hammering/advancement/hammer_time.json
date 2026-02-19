@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:adventure/root",
   "criteria": {
-    "has_iron_hammer": {
+    "has_any_hammer": {
       "conditions": {
         "items": [
           {
-            "items": "hammering:iron_hammer"
+            "items": "#hammering:hammer"
           }
         ]
       },
@@ -26,7 +26,7 @@
   },
   "requirements": [
     [
-      "has_iron_hammer"
+      "has_any_hammer"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,7 +1,7 @@
 package com.github.command17.hammering.fabric.data;
 
 import com.github.command17.hammering.Hammering;
-import com.github.command17.hammering.item.ModItems;
+import com.github.command17.hammering.common.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.core.HolderLookup;
@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -20,16 +20,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
-    @NotNull
+    @NullMarked
     @Override
     protected RecipeProvider createRecipeProvider(HolderLookup.Provider provider, RecipeOutput recipeOutput) {
         return new RecipeGenerator(provider, recipeOutput);
     }
 
-    @NotNull
+    @NullMarked
     @Override
     public String getName() {
-        return Hammering.resource("recipes").toString();
+        return Hammering.resource("recipe_generator").toString();
     }
 
     private static class RecipeGenerator extends RecipeProvider {

@@ -1,14 +1,14 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: "[FEATURE]"
+about: Tell me ideas I can use
+title: "[Feature]"
 labels: enhancement
 assignees: ''
 
 ---
 
-**Describe the feature**
-A clear and concise description of what the feature is.
+**What's the feature supposed to be?**
+A description of want you to be added.
 
-**Additional context**
-Add any other context or screenshots about the feature request here if needed.
+**Does this feature request require additional context?**
+Add any other context or screenshots about the feature request here.

@@ -1,11 +1,12 @@
-package com.github.command17.hammering.item;
+package com.github.command17.hammering.common.item;
 
-import com.github.command17.hammering.util.ModTags;
+import com.github.command17.hammering.common.util.ModTags;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
+import org.jspecify.annotations.NonNull;
 
 public class HammerItem extends Item {
     private final ToolMaterial toolMaterial;
@@ -13,7 +14,7 @@ public class HammerItem extends Item {
     public HammerItem(ToolMaterial tier, int attackDamage, float attackSpeed, Properties properties, float durabilityModifier) {
         super(
                 properties
-                        .tool(tier, ModTags.BlockTags.MINEABLE_WITH_HAMMER, attackDamage, attackSpeed, 0)
+                        .tool(tier, ModTags.BlockTags.MINEABLE_WITH_HAMMER, attackDamage, attackSpeed, 1)
                         .durability((int) (tier.durability() * durabilityModifier))
         );
         this.toolMaterial = tier;
@@ -28,7 +29,7 @@ public class HammerItem extends Item {
     }
 
     @Override
-    public void postHurtEnemy(ItemStack stack, LivingEntity enemy, LivingEntity entity) {
+    public void postHurtEnemy(ItemStack stack, @NonNull LivingEntity enemy, @NonNull LivingEntity entity) {
         stack.hurtAndBreak(2, entity, EquipmentSlot.MAINHAND);
     }
 }

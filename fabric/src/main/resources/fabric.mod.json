@@ -20,9 +20,6 @@
     ],
     "main": [
       "com.github.command17.hammering.fabric.HammeringFabric"
-    ],
-    "client": [
-      "com.github.command17.hammering.fabric.client.HammeringFabricClient"
     ]
   },
   "mixins": [
@@ -30,7 +27,7 @@
   ],
   "depends": {
     "fabricloader": ">=0.16.13",
-    "minecraft": ">=1.21.6 <=1.21.8",
+    "minecraft": "~1.21.11",
     "java": ">=21",
     "architectury": ">=17.0.6",
     "fabric-api": "*",

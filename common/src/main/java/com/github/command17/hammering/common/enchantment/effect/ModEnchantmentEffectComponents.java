@@ -1,4 +1,4 @@
-package com.github.command17.hammering.enchantment.effect;
+package com.github.command17.hammering.common.enchantment.effect;
 
 import com.github.command17.hammering.Hammering;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -15,8 +15,8 @@ public final class ModEnchantmentEffectComponents {
     public static final RegistrySupplier<DataComponentType<Unit>> AREA_MINE = register("area_mine",
             () -> DataComponentType.<Unit>builder().persistent(Unit.CODEC).build());
 
-    private static<T> RegistrySupplier<DataComponentType<T>> register(String name, Supplier<DataComponentType<T>> componentType) {
-        return REGISTRY.register(name, componentType);
+    private static<T> RegistrySupplier<DataComponentType<T>> register(String id, Supplier<DataComponentType<T>> componentType) {
+        return REGISTRY.register(id, componentType);
     }
 
     public static void register() {

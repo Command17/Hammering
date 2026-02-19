@@ -1,11 +1,11 @@
-// 1.21.5	-999999999-01-01T00:00:00	Hammering/Tags for minecraft:item
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/c/tags/item/tools/mining_tools.json
+// 1.21.11	-999999999-01-01T00:00:00	Hammering/Tags for minecraft:item
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/c/tags/item/tools/mining_tools.json
 7cf6db82f8eb8c657d57e5c823e96a173c0a0da0 data/hammering/tags/item/hammer.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/axes.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/durability.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/mining.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/mining_loot.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/enchantable/vanishing.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/hoes.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/pickaxes.json
-1c4474b56de3a278a7af4d995f31eaec4785b2c6 data/minecraft/tags/item/shovels.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/axes.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/enchantable/durability.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/enchantable/mining.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/enchantable/mining_loot.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/enchantable/vanishing.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/hoes.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/pickaxes.json
+5b01fc4b4b1ae9fbd453b7fdb70c26752e64a3ba data/minecraft/tags/item/shovels.json

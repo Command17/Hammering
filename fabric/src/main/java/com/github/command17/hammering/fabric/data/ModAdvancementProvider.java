@@ -1,15 +1,21 @@
 package com.github.command17.hammering.fabric.data;
 
 import com.github.command17.hammering.Hammering;
-import com.github.command17.hammering.item.ModItems;
+import com.github.command17.hammering.common.item.ModItems;
+import com.github.command17.hammering.common.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancements.*;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.InventoryChangeTrigger;
+import net.minecraft.advancements.criterion.ItemPredicate;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -21,8 +27,12 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
     }
 
     @SuppressWarnings("removal")
+    @NullMarked
     @Override
     public void generateAdvancement(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer) {
+        HolderGetter<Item> itemLookup = provider.lookupOrThrow(Registries.ITEM);
+        ItemPredicate anyHammerPredicate = ItemPredicate.Builder.item().of(itemLookup, ModTags.ItemTags.HAMMER).build();
+
         AdvancementHolder hammerTime = Advancement.Builder.advancement()
                 .display(new DisplayInfo(new ItemStack(ModItems.IRON_HAMMER.get()),
                         Component.translatable("advancement.hammering.hammer_time.title"),
@@ -32,8 +42,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true,
                         true,
                         false))
-                .parent(ResourceLocation.withDefaultNamespace("adventure/root"))
-                .addCriterion("has_iron_hammer", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.IRON_HAMMER.get()))
+                .parent(Identifier.withDefaultNamespace("adventure/root"))
+                .addCriterion("has_any_hammer", InventoryChangeTrigger.TriggerInstance.hasItems(anyHammerPredicate))
                 .save(consumer, Hammering.resource("hammer_time").toString());
 
         Advancement.Builder.advancement()

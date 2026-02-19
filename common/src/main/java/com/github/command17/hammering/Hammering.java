@@ -2,15 +2,15 @@ package com.github.command17.hammering;
 
 import com.github.command17.hammering.config.ModConfig;
 import com.github.command17.hammering.config.ModServerConfig;
-import com.github.command17.hammering.enchantment.ModEnchantments;
-import com.github.command17.hammering.enchantment.effect.ModEnchantmentEffectComponents;
-import com.github.command17.hammering.event.ModEvents;
-import com.github.command17.hammering.item.ModItems;
-import com.github.command17.hammering.item.tab.ModCreativeModeTabs;
+import com.github.command17.hammering.common.enchantment.ModEnchantments;
+import com.github.command17.hammering.common.enchantment.effect.ModEnchantmentEffectComponents;
+import com.github.command17.hammering.common.event.ModEvents;
+import com.github.command17.hammering.common.item.ModItems;
+import com.github.command17.hammering.common.item.tab.ModCreativeModeTabs;
 import com.mojang.logging.LogUtils;
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.CreativeTabRegistry;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.common.ModConfigSpec;
@@ -65,8 +65,8 @@ public final class Hammering {
         }
     }
 
-    public static ResourceLocation resource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier resource(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
     static {

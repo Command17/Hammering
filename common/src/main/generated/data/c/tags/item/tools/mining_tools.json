@@ -1,5 +1,8 @@
 {
   "values": [
-    "#hammering:hammer"
+    {
+      "id": "#hammering:hammer",
+      "required": false
+    }
   ]
 }

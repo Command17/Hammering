@@ -1,11 +1,12 @@
 package com.github.command17.hammering.fabric.data;
 
-import com.github.command17.hammering.item.ModItems;
-import com.github.command17.hammering.util.ModTags;
+import com.github.command17.hammering.common.item.ModItems;
+import com.github.command17.hammering.common.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
+import org.jspecify.annotations.NullMarked;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -14,6 +15,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         super(output, completableFuture);
     }
 
+    @NullMarked
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         valueLookupBuilder(ModTags.ItemTags.HAMMER)
@@ -23,32 +25,32 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.NETHERITE_HAMMER.get());
 
         valueLookupBuilder(ModTags.ItemTags.MINING_TOOLS)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.MINING_ENCHANTABLE)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.MINING_LOOT_ENCHANTABLE)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.DURABILITY_ENCHANTABLE)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.VANISHING_ENCHANTABLE)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         // Tools
 
         valueLookupBuilder(ItemTags.AXES)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.SHOVELS)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.HOES)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
 
         valueLookupBuilder(ItemTags.PICKAXES)
-                .forceAddTag(ModTags.ItemTags.HAMMER);
+                .addOptionalTag(ModTags.ItemTags.HAMMER);
     }
 }

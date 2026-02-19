@@ -1,12 +1,13 @@
 package com.github.command17.hammering.fabric.data;
 
-import com.github.command17.hammering.item.ModItems;
+import com.github.command17.hammering.common.item.ModItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.world.item.Item;
+import org.jspecify.annotations.NonNull;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -14,12 +15,10 @@ public class ModModelProvider extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators generator) {
-
-    }
+    public void generateBlockStateModels(@NonNull BlockModelGenerators generator) {}
 
     @Override
-    public void generateItemModels(ItemModelGenerators generator) {
+    public void generateItemModels(@NonNull ItemModelGenerators generator) {
         handheld(ModItems.IRON_HAMMER.get(), generator);
         handheld(ModItems.GOLDEN_HAMMER.get(), generator);
         handheld(ModItems.DIAMOND_HAMMER.get(), generator);

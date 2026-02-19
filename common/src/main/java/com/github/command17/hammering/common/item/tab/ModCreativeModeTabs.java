@@ -1,8 +1,8 @@
-package com.github.command17.hammering.item.tab;
+package com.github.command17.hammering.common.item.tab;
 
 import com.github.command17.hammering.Hammering;
-import com.github.command17.hammering.enchantment.ModEnchantments;
-import com.github.command17.hammering.item.ModItems;
+import com.github.command17.hammering.common.enchantment.ModEnchantments;
+import com.github.command17.hammering.common.item.ModItems;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -13,10 +13,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 
+import java.util.function.Supplier;
+
 public final class ModCreativeModeTabs {
     private static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Hammering.MOD_ID, Registries.CREATIVE_MODE_TAB);
 
-    public static final RegistrySupplier<CreativeModeTab> MAIN = REGISTRY.register("main",
+    public static final RegistrySupplier<CreativeModeTab> MAIN = register("main",
             () -> CreativeTabRegistry.create((builder) -> builder
                     .title(Component.translatable("itemGroup.hammering.main"))
                     .icon(() -> new ItemStack(ModItems.NETHERITE_HAMMER.get()))
@@ -37,6 +39,10 @@ public final class ModCreativeModeTabs {
                             }
                         });
                     })));
+
+    private static RegistrySupplier<CreativeModeTab> register(String id, Supplier<CreativeModeTab> sup) {
+        return REGISTRY.register(id, sup);
+    }
 
     public static void register() {
         REGISTRY.register();

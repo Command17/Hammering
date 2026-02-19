@@ -1,7 +1,7 @@
-package com.github.command17.hammering.event;
+package com.github.command17.hammering.common.event;
 
 import com.github.command17.hammering.Hammering;
-import com.github.command17.hammering.util.BlockUtil;
+import com.github.command17.hammering.common.util.HammerUtil;
 import dev.architectury.event.EventResult;
 import dev.architectury.event.events.common.BlockEvent;
 import dev.architectury.utils.value.IntValue;
@@ -11,17 +11,17 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public final class ModEvents {
     private static EventResult breakBlock(Level level, BlockPos pos, BlockState state, ServerPlayer player, @Nullable IntValue xp) {
         ItemStack stack = player.getMainHandItem();
-        if (!player.isShiftKeyDown() && !player.isCreative() && !stack.isEmpty() && stack.isEnchanted()) {
-            BlockUtil.findBlocks(stack, player, pos, level).forEach((blockPos) -> {
-                BlockState blockState = level.getBlockState(blockPos);
-                if (blockPos != pos && BlockUtil.canMineOther(stack, state, blockState)) {
-                    blockState.getBlock().playerDestroy(level, player, blockPos, blockState, level.getBlockEntity(blockPos), stack);
-                    level.destroyBlock(blockPos, false, player);
+        if (HammerUtil.canPlayerUseAreaMine(player) && !stack.isEmpty()) {
+            HammerUtil.findBlocks(stack, player, pos, level).forEach((otherPos) -> {
+                BlockState otherState = level.getBlockState(otherPos);
+                if (!otherPos.equals(pos) && HammerUtil.canMineOther(stack, state, otherState)) {
+                    otherState.getBlock().playerDestroy(level, player, otherPos, otherState, level.getBlockEntity(otherPos), stack);
+                    level.destroyBlock(otherPos, false, player);
                     stack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                 }
             });

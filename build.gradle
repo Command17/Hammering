@@ -1,8 +1,10 @@
+import me.modmuss50.mpp.ReleaseType
+
 plugins {
-    id 'dev.architectury.loom' version '1.10-SNAPSHOT' apply false
+    id 'dev.architectury.loom' version '1.13-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
-    id "me.modmuss50.mod-publish-plugin" version "0.7.4"
+    id "me.modmuss50.mod-publish-plugin" version "1.1.0"
 }
 
 architectury {
@@ -11,7 +13,12 @@ architectury {
 
 allprojects {
     group = rootProject.maven_group
-    version = rootProject.mod_version
+    version = "${rootProject.mod_version}+mc${rootProject.minecraft_version}"
+
+    var buildNum = rootProject.mod_build_number
+    if (!buildNum.isBlank()) {
+        version += "-b${buildNum}"
+    }
 }
 
 subprojects {
@@ -20,7 +27,21 @@ subprojects {
     apply plugin: 'maven-publish'
 
     base {
-        archivesName = archives_name
+        // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
+        archivesName = "$rootProject.archives_name-$project.name"
+    }
+
+    ext {
+        generatedResources = project(":common").file("src/main/generated").absolutePath
+    }
+
+    // Add the generated resources to the main source set
+    sourceSets {
+        main {
+            resources {
+                srcDirs += [project.generatedResources]
+            }
+        }
     }
 
     repositories {
@@ -30,42 +51,47 @@ subprojects {
         // See https://docs.gradle.org/current/userguide/declaring_repositories.html
         // for more information about repositories.
 
-        mavenCentral()
-
-        // REI
-        maven {
-            url "https://maven.shedaniel.me/"
-        }
-
         // ParchmentMC
         maven {
             name = 'ParchmentMC'
             url = 'https://maven.parchmentmc.org'
         }
 
-        // FCAPI
+        // EMI, ModMenu
+        maven {
+            name = "TerraformersMC"
+            url = "https://maven.terraformersmc.com/"
+        }
+
+        // FCAPIP
         maven {
             name = "Fuzs Mod Resources"
             url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
         }
 
-        // Mod Menu
-        maven {
-            name = "Terraformers"
-            url = "https://maven.terraformersmc.com/"
+        // Modrinth
+        repositories {
+            exclusiveContent {
+                forRepository {
+                    maven {
+                        name = "Modrinth"
+                        url = "https://api.modrinth.com/maven"
+                    }
+                }
+
+                filter {
+                    includeGroup "maven.modrinth"
+                }
+            }
         }
     }
 
     dependencies {
         minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
-        mappings loom.officialMojangMappings()
-        // TODO: Readd
-        /*
         mappings loom.layered() {
             officialMojangMappings()
-            parchment("org.parchmentmc.data:parchment-${minecraft_version}:${parchmentmc_version}@zip")
+            parchment("org.parchmentmc.data:parchment-${parchmentmc_minecraft_version}:${parchmentmc_version}@zip")
         }
-         */
     }
 
     java {
@@ -101,24 +127,89 @@ subprojects {
     }
 }
 
-var changelogText = rootProject.file("Changelog.md").text
-
 publishMods {
-    github {
-        if (project.release_type == "alpha") {
-            type = ALPHA
-        } else if (project.release_type == "beta") {
-            type = BETA
-        } else if (project.release_type == "stable") {
-            type = STABLE
+    def fabricProject = project(":fabric")
+    def neoforgeProject = project(":neoforge")
+    def supportedMcVersions = supported_minecraft_versions.split(",")
+    def modrinthOptions = modrinthOptions {
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        minecraftVersions.addAll(supportedMcVersions)
+        projectId = ""
+    }
+
+    def curseforgeOptions = curseforgeOptions {
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        clientRequired = true
+        serverRequired = true
+        javaVersions.add(JavaVersion.VERSION_21)
+        minecraftVersions.addAll(supportedMcVersions)
+        projectId = ""
+    }
+
+    displayName = "Hammering v${project.version}"
+    changelog = rootProject.file("Changelog.md").text
+    type = ReleaseType.of(release_type)
+
+    modrinth("modrinthFabric") {
+        from modrinthOptions
+        file fabricProject
+        modLoaders.addAll("fabric", "quilt")
+
+        // Fabric API
+        requires {
+            id = "P7dR8mSH"
         }
 
-        displayName = "Hammering v${mod_version}+mc${minecraft_version}"
-        changelog = changelogText
+        // Forge Config API Port
+        requires {
+            id = "ohNO6lps"
+        }
+
+        // Architectury
+        requires {
+            id = "lhGA9TYQ"
+        }
+    }
+
+    curseforge("curseforgeFabric") {
+        from curseforgeOptions
+        file fabricProject
+        modLoaders.addAll("fabric", "quilt")
+
+        // Fabric API, Forge Config API Port, Architectury
+        requires("fabric-api", "forge-config-api-port", "architectury-api")
+    }
+
+    modrinth("modrinthNeoForge") {
+        from modrinthOptions
+        file neoforgeProject
+        modLoaders.add("neoforge")
+
+        // Architectury
+        requires {
+            id = "lhGA9TYQ"
+        }
+    }
+
+    curseforge("curseforgeNeoForge") {
+        from curseforgeOptions
+        file neoforgeProject
+        modLoaders.add("neoforge")
+
+        // Architectury
+        requires("architectury-api")
+
+        // Configured
+        optional("configured")
+    }
+
+    github {
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "Command17/Hammering"
         commitish = branch
-        tagName = "${mod_version}+mc${minecraft_version}"
-        allowEmptyFiles = true
+        tagName = project.version
+
+        additionalFile(fabricProject)
+        additionalFile(neoforgeProject)
     }
 }
