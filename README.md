@@ -31,10 +31,10 @@ which can mine up to a 3x3x3 area with enchantments!
 
 ![hammering](assets/hammering.gif)
 
-Hammering is an enchantment that can be put on hammers, it mine a 3x3 area and with each level the depth
+Hammering is an enchantment that can be put on hammers. It allows for mining a 3x3 area and with each level the depth
 increases.
 
-Hammering has 3 levels, means on level 3 it mines a 3x3x3 area.
+Hammering has 3 levels, which means on level 3 it mines a 3x3x3 area.
 
 **The enchantment can be disabled by sneaking**
 
